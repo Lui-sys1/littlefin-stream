@@ -1,0 +1,174 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: linear-gradient(135deg, #e0f2fe, #f0fdf4);
+  color: #0f172a;
+  line-height: 1.4;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+header p {
+  color: #64748b;
+  margin-top: 5px;
+}
+
+/* INFO */
+.top-info {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #16a34a;
+}
+
+/* BOTÓN WHATSAPP */
+.btn-whatsapp {
+  display: inline-block;
+  margin-top: 15px;
+  background: #25D366;
+  padding: 12px 22px;
+  border-radius: 999px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+}
+
+/* SECCIONES */
+.section {
+  padding: 25px 15px;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #1e293b;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* CARDS */
+.card {
+  background: #ffffff;
+  color: #0f172a;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* LOGOS */
+.logo {
+  width: 70px;
+  height: 40px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+}
+
+/* TITULOS */
+h3 {
+  margin: 10px 0 5px;
+}
+
+/* PRECIO */
+.price {
+  font-size: 22px;
+  margin: 8px 0;
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* BOTÓN */
+button {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* SECCIONES INFO */
+.pago, .reglas {
+  text-align: center;
+  color: #334155;
+  font-size: 14px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* BOTÓN FLOTANTE */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  padding: 14px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .price {
+    font-size: 20px;
+  }
+}
