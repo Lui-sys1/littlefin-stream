@@ -7,29 +7,41 @@
 
 /* BODY */
 body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #e0f2fe, #f0fdf4);
   color: #0f172a;
-  line-height: 1.4;
 }
 
 /* HEADER */
-header {
+.header {
   text-align: center;
-  padding: 40px 20px;
+  padding: 50px 20px 30px;
 }
 
-header h1 {
-  font-size: 30px;
-  font-weight: 700;
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-header p {
+.logo-icon {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+
+.subtitle {
   color: #64748b;
   margin-top: 5px;
 }
 
-/* INFO */
 .top-info {
   margin-top: 10px;
   font-size: 14px;
@@ -44,25 +56,19 @@ header p {
   padding: 12px 22px;
   border-radius: 999px;
   color: white;
-  font-weight: bold;
   text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn-whatsapp:hover {
-  transform: translateY(-2px);
+  font-weight: bold;
 }
 
 /* SECCIONES */
 .section {
-  padding: 25px 15px;
+  padding: 30px 15px;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .section h2 {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 20px;
-  color: #1e293b;
 }
 
 /* GRID */
@@ -70,6 +76,76 @@ header p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* LOGOS */
+.logo {
+  width: 70px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* PRECIO */
+.price {
+  font-size: 22px;
+  margin: 10px 0;
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* BOTÓN */
+button {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
+}
+
+/* BOTÓN FLOTANTE */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  padding: 14px;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}  gap: 20px;
   max-width: 1100px;
   margin: auto;
 }
