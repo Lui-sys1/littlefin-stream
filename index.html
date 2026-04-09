@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Littlefin Stream</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Littlefin Stream</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -12,6 +12,11 @@
 <header>
   <h1>🚀 Littlefin Stream</h1>
   <p>Streaming premium al mejor precio</p>
+
+  <div class="top-info">
+    ⚡ Entrega inmediata | 🔐 Garantía | 📱 Soporte rápido
+  </div>
+
   <a class="btn-whatsapp" href="https://wa.me/5212201467666" target="_blank">
     📲 Contactar por WhatsApp
   </a>
@@ -19,22 +24,157 @@
 
 <main>
 
-<section>
+<!-- MÁS VENDIDO -->
+<section class="section">
   <h2>🔥 Más vendidos</h2>
   <div class="grid">
 
     <div class="card">
+      <span class="badge red">🔥 Top</span>
       <h3>Disney+ 1 Mes</h3>
-      <p class="precio">$70</p>
-      <a href="https://wa.me/5212201467666?text=Quiero%20Disney%2B%201%20Mes%20%2470" target="_blank">
-        <button>Comprar</button>
-      </a>
+      <p class="price">$70</p>
+      <button onclick="comprar('Disney+ 1 Mes $70')">Comprar</button>
     </div>
 
     <div class="card">
+      <span class="badge red">🔥 Top</span>
       <h3>HBO Max 1 Mes</h3>
-      <p class="precio">$95</p>
-      <a href="https://wa.me/5212201467666?text=Quiero%20HBO%20Max%201%20Mes%20%2495" target="_blank">
+      <p class="price">$95</p>
+      <button onclick="comprar('HBO Max 1 Mes $95')">Comprar</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- RECOMENDADO -->
+<section class="section">
+  <h2>⭐ Recomendado</h2>
+  <div class="grid">
+
+    <div class="card">
+      <span class="badge green">⭐</span>
+      <h3>YouTube Premium 1 Mes</h3>
+      <p class="price">$65</p>
+      <button onclick="comprar('YouTube Premium 1 Mes $65')">Comprar</button>
+    </div>
+
+    <div class="card">
+      <span class="badge green">⭐</span>
+      <h3>Fox One 1 Mes</h3>
+      <p class="price">$65</p>
+      <button onclick="comprar('Fox One 1 Mes $65')">Comprar</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ECONÓMICO -->
+<section class="section">
+  <h2>💸 Económico</h2>
+  <div class="grid">
+
+    <div class="card">
+      <h3>VIX 1 Mes</h3>
+      <p class="price">$35</p>
+      <button onclick="comprar('VIX 1 Mes $35')">Comprar</button>
+    </div>
+
+    <div class="card">
+      <h3>VIX 2 Meses</h3>
+      <p class="price">$60</p>
+      <button onclick="comprar('VIX 2 Meses $60')">Comprar</button>
+    </div>
+
+    <div class="card">
+      <h3>Paramount+ 1 Mes</h3>
+      <p class="price">$35</p>
+      <button onclick="comprar('Paramount+ 1 Mes $35')">Comprar</button>
+    </div>
+
+    <div class="card">
+      <h3>Prime Video 1 Mes</h3>
+      <p class="price">$40</p>
+      <button onclick="comprar('Prime Video 1 Mes $40')">Comprar</button>
+    </div>
+
+    <div class="card">
+      <h3>Crunchyroll 1 Mes</h3>
+      <p class="price">$35</p>
+      <button onclick="comprar('Crunchyroll 1 Mes $35')">Comprar</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- PAQUETES -->
+<section class="section">
+  <h2>📦 Paquetes</h2>
+  <div class="grid">
+
+    <div class="card">
+      <span class="badge purple">💥</span>
+      <h3>Disney + Fox</h3>
+      <p class="price">$120</p>
+      <button onclick="comprar('Disney + Fox $120')">Comprar</button>
+    </div>
+
+    <div class="card">
+      <span class="badge purple">💥</span>
+      <h3>Combo Económico</h3>
+      <p class="price">$90</p>
+      <button onclick="comprar('Combo Económico $90')">Comprar</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- PAGOS -->
+<section class="section pago">
+  <h2>💳 Métodos de pago</h2>
+  <p>✔ Transferencia bancaria</p>
+  <p>✔ Link de pago (Clip)</p>
+</section>
+
+<!-- REGLAS -->
+<section class="section reglas">
+  <h2>🔐 Reglas</h2>
+  <p>Uso personal</p>
+  <p>No cambiar contraseña</p>
+  <p>1 dispositivo</p>
+</section>
+
+</main>
+
+<footer>
+  <p>📞 WhatsApp: +52 1 220 146 7666</p>
+  <p>© 2026 Littlefin Stream</p>
+</footer>
+
+<!-- SCRIPT PRO -->
+<script>
+const CONFIG = {
+  telefono: "5212201467666",
+  negocio: "Littlefin Stream"
+};
+
+function comprar(plan) {
+  const mensaje = `Hola 👋, quiero comprar *${plan}* en ${CONFIG.negocio}.
+¿Está disponible? 🔥`;
+
+  const url = `https://wa.me/${CONFIG.telefono}?text=${encodeURIComponent(mensaje)}`;
+
+  const esMovil = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (esMovil) {
+    window.location.href = url;
+  } else {
+    window.open(url, "_blank");
+  }
+}
+</script>
+
+</body>
+  </html>      <a href="https://wa.me/5212201467666?text=Quiero%20HBO%20Max%201%20Mes%20%2495" target="_blank">
         <button>Comprar</button>
       </a>
     </div>
