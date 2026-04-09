@@ -1,75 +1,73 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* BODY */
 body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  color: #f8fafc;
-  line-height: 1.4;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #020617, #0f172a);
+  color: white;
 }
 
-/* HEADER */
 header {
   text-align: center;
-  padding: 40px 20px 30px;
-}
-
-header h1 {
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-header p {
-  color: #94a3b8;
-  margin-top: 5px;
+  padding: 30px;
 }
 
 .top-info {
-  margin-top: 12px;
-  font-size: 13px;
   color: #22c55e;
-  opacity: 0.9;
+  margin: 10px 0;
 }
 
-/* BOTÓN WHATSAPP */
 .btn-whatsapp {
   display: inline-block;
-  margin-top: 15px;
   background: #25D366;
-  padding: 10px 18px;
+  padding: 10px 20px;
   border-radius: 999px;
   color: white;
-  font-weight: bold;
   text-decoration: none;
+}
+
+.section {
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  background: #111827;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
   transition: 0.3s;
 }
 
-.btn-whatsapp:hover {
-  transform: translateY(-2px);
-  background: #1ebe5d;
+.card:hover {
+  transform: translateY(-5px);
 }
 
-/* SECCIONES */
-.section {
-  padding: 25px 15px;
+.logo {
+  width: 80px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 10px;
 }
 
-.section h2 {
-  margin-bottom: 20px;
-  text-align: center;
+.price {
   font-size: 20px;
-  font-weight: 600;
+  color: #22c55e;
+  margin: 10px 0;
 }
 
-/* GRID */
-.grid {
-  display: grid;
+button {
+  background: #22c55e;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 18px;
   max-width: 1100px;
