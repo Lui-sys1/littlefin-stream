@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #020617, #000);
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
   color: white;
 }
 
@@ -11,12 +11,8 @@ header {
   padding: 40px 20px;
 }
 
-header h1 {
-  font-size: 32px;
-}
-
 header p {
-  color: #94a3b8;
+  color: #cbd5f5;
 }
 
 .top-info {
@@ -28,13 +24,100 @@ header p {
 .btn-whatsapp {
   display: inline-block;
   margin-top: 15px;
-  background: linear-gradient(135deg, #25D366, #1ebe5d);
-  padding: 12px 22px;
+  background: #25D366;
+  padding: 12px 20px;
   border-radius: 999px;
   color: white;
-  font-weight: bold;
   text-decoration: none;
+  font-weight: bold;
 }
+
+/* SECCIONES */
+.section {
+  padding: 25px 15px;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  color: #0f172a;
+  padding: 18px;
+  border-radius: 16px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* LOGOS */
+.logo {
+  width: 100%;
+  max-width: 90px;
+  height: 40px;
+  object-fit: contain;
+  margin: 10px auto;
+  display: block;
+}
+
+/* PRECIO */
+.price {
+  font-size: 22px;
+  margin: 10px 0;
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* BOTÓN */
+button {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* PAGOS */
+.pago, .reglas {
+  text-align: center;
+  color: #e2e8f0;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #cbd5f5;
+}
+
+/* BOTÓN FLOTANTE */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}}
 
 /* SECCIONES */
 .section {
