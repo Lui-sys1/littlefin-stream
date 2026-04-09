@@ -1,40 +1,201 @@
-body {
+/* RESET */
+* {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #020617, #0f172a);
-  color: white;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* BODY */
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #f8fafc;
+  line-height: 1.4;
+}
+
+/* HEADER */
 header {
   text-align: center;
-  padding: 30px 20px;
+  padding: 40px 20px 30px;
 }
 
 header h1 {
-  font-size: 28px;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 header p {
   color: #94a3b8;
+  margin-top: 5px;
 }
 
+.top-info {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #22c55e;
+  opacity: 0.9;
+}
+
+/* BOTÓN WHATSAPP */
+.btn-whatsapp {
+  display: inline-block;
+  margin-top: 15px;
+  background: #25D366;
+  padding: 10px 18px;
+  border-radius: 999px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  background: #1ebe5d;
+}
+
+/* SECCIONES */
 .section {
-  padding: 20px;
+  padding: 25px 15px;
 }
 
 .section h2 {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
 }
 
+/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 18px;
+  max-width: 1100px;
+  margin: auto;
 }
 
+/* CARDS */
 .card {
-  background: #1e293b;
-  padding: 15px;
+  background: rgba(30, 41, 59, 0.55);
+  backdrop-filter: blur(14px);
+  padding: 18px;
+  border-radius: 18px;
+  text-align: center;
+  transition: all 0.25s ease;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 
+    0 8px 25px rgba(0,0,0,0.4),
+    inset 0 0 0 rgba(255,255,255,0.02);
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 
+    0 15px 40px rgba(0,0,0,0.6);
+}
+
+/* BADGES */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 9px;
+  font-size: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.red { background: #ef4444; }
+.green { background: #22c55e; }
+.purple { background: #a855f7; }
+
+/* PRECIO */
+.price {
+  font-size: 24px;
+  margin: 12px 0;
+  font-weight: 700;
+  color: #22c55e;
+}
+
+/* BOTÓN */
+button {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border: none;
+  padding: 11px;
+  width: 100%;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 14px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+/* PAGOS Y REGLAS */
+.pago, .reglas {
+  text-align: center;
+  color: #cbd5f5;
+  font-size: 14px;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #64748b;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 24px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .price {
+    font-size: 20px;
+  }
+}  font-size: 22px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* BOTÓN */
+button {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* PAGOS Y REGLAS */
+.pago, .reglas {
+  text-align: center;
+}  padding: 15px;
   border-radius: 16px;
   text-align: center;
   transition: 0.3s;
