@@ -9,23 +9,29 @@
 
 <body>
 
-<header>
-  <h1>🚀 Littlefin Stream</h1>
-  <p>Streaming premium al mejor precio</p>
+<header class="header">
+
+  <div class="logo-container">
+    <div class="logo-icon">LF</div>
+    <h1>Littlefin Stream</h1>
+  </div>
+
+  <p class="subtitle">Streaming premium al mejor precio</p>
 
   <div class="top-info">
-    ⚡ Entrega inmediata | 🔐 Garantía | 📱 Soporte rápido
+    Entrega inmediata · Garantía · Soporte rápido
   </div>
 
   <a class="btn-whatsapp" href="https://wa.me/5212201467666" target="_blank">
-    📲 Contactar por WhatsApp
+    Contactar por WhatsApp
   </a>
+
 </header>
 
 <main>
 
 <section class="section">
-  <h2>🔥 Más vendidos</h2>
+  <h2>Más vendidos</h2>
   <div class="grid">
 
     <div class="card">
@@ -46,7 +52,7 @@
 </section>
 
 <section class="section">
-  <h2>⭐ Recomendado</h2>
+  <h2>Recomendado</h2>
   <div class="grid">
 
     <div class="card">
@@ -66,7 +72,7 @@
 </section>
 
 <section class="section">
-  <h2>💸 Económico</h2>
+  <h2>Económico</h2>
   <div class="grid">
 
     <div class="card">
@@ -76,18 +82,43 @@
     </div>
 
     <div class="card">
+      <h3>VIX 2 Meses</h3>
+      <p class="price">$60</p>
+      <button onclick="comprar('VIX 2 Meses $60')">Comprar ahora</button>
+    </div>
+
+    <div class="card">
       <h3>Paramount+</h3>
       <p class="price">$35</p>
       <button onclick="comprar('Paramount+ $35')">Comprar ahora</button>
     </div>
 
+    <div class="card">
+      <h3>Prime Video</h3>
+      <p class="price">$40</p>
+      <button onclick="comprar('Prime Video $40')">Comprar ahora</button>
+    </div>
+
   </div>
+</section>
+
+<section class="section pago">
+  <h2>Métodos de pago</h2>
+  <p>Transferencia bancaria</p>
+  <p>Link de pago</p>
+</section>
+
+<section class="section reglas">
+  <h2>Reglas</h2>
+  <p>Uso personal</p>
+  <p>No cambiar contraseña</p>
+  <p>1 dispositivo</p>
 </section>
 
 </main>
 
 <footer>
-  <p>📞 WhatsApp: +52 1 220 146 7666</p>
+  <p>WhatsApp: +52 1 220 146 7666</p>
   <p>© 2026 Littlefin Stream</p>
 </footer>
 
@@ -97,10 +128,9 @@
 function comprar(plan) {
   let numero = "5212201467666";
 
-  let mensaje = `Hola 👋, quiero adquirir *${plan}* en Littlefin Stream.
+  let mensaje = `Hola, me interesa ${plan} en Littlefin Stream.
 
-¿Está disponible? 🔥  
-Me interesa pagar hoy mismo 💳`;
+¿Está disponible?`;
 
   let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
