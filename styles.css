@@ -56,9 +56,16 @@ body {
   right: 20px;
   font-weight: bold;
   background: white;
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 999px;
+  text-decoration: none;
+  color: #0f172a;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+.cart-icon:hover {
+  transform: scale(1.05);
 }
 
 /* PROMO */
@@ -66,7 +73,7 @@ body {
   text-align: center;
   color: #16a34a;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 /* SECCIONES */
@@ -77,6 +84,7 @@ body {
 .section h2 {
   text-align: center;
   margin-bottom: 20px;
+  font-size: 20px;
 }
 
 /* GRID */
@@ -139,63 +147,54 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* CARRITO */
-.carrito {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 260px;
-  background: white;
-  padding: 15px;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-  font-size: 14px;
-}
-
-.carrito h3 {
-  margin-bottom: 10px;
-}
-
-/* LISTA */
-.carrito ul {
-  list-style: none;
-  max-height: 150px;
-  overflow-y: auto;
-  margin-bottom: 10px;
-}
-
-/* ITEM */
-.carrito li {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 6px;
-}
-
-/* BOTÓN ELIMINAR */
-.carrito li button {
-  background: #ef4444;
-  padding: 4px 6px;
-  font-size: 12px;
-  border-radius: 6px;
-}
-
-/* TOTAL */
-#total {
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-/* BOTÓN FINAL */
-.carrito button {
-  width: 100%;
-  margin-top: 10px;
-}
-
 /* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
   color: #64748b;
+  margin-top: 40px;
+}
+
+/* ========================= */
+/* 🎯 ESTILOS PARA CARRITO.HTML */
+/* ========================= */
+
+.carrito-page {
+  max-width: 600px;
+  margin: 40px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.carrito-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.carrito-page ul {
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+.carrito-page li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.carrito-page button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* BOTÓN ELIMINAR */
+.eliminar {
+  background: #ef4444;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
 }
 
 /* RESPONSIVE */
@@ -204,8 +203,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 
-  .carrito {
+  .carrito-page {
     width: 90%;
-    right: 5%;
   }
 }
