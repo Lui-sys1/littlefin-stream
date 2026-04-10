@@ -22,11 +22,15 @@
     Entrega inmediata · Garantía · Soporte rápido
   </div>
 
-  <a class="btn-whatsapp" href="https://wa.me/5212201467666" target="_blank">
-    Contactar por WhatsApp
-  </a>
+  <div class="cart-icon">
+    🛒 <span id="contador">0</span>
+  </div>
 
 </header>
+
+<p class="promo">
+Descuento automático: 5% en 3 productos · 10% en 6 productos
+</p>
 
 <main>
 
@@ -39,21 +43,21 @@
       <img src="Netflix.png" class="logo">
       <h3>Netflix 1 Mes</h3>
       <p class="price">$110</p>
-      <button onclick="comprar('Netflix 1 Mes $110')">Comprar ahora</button>
+      <button onclick="agregarCarrito('Netflix 1 Mes',110)">Agregar</button>
     </div>
 
     <div class="card">
       <img src="disney.jpg" class="logo">
       <h3>Disney+ 1 Mes</h3>
       <p class="price">$70</p>
-      <button onclick="comprar('Disney+ 1 Mes $70')">Comprar ahora</button>
+      <button onclick="agregarCarrito('Disney+ 1 Mes',70)">Agregar</button>
     </div>
 
     <div class="card">
       <img src="prime.jpeg" class="logo">
       <h3>Prime Video</h3>
       <p class="price">$40</p>
-      <button onclick="comprar('Prime Video $40')">Comprar ahora</button>
+      <button onclick="agregarCarrito('Prime Video',40)">Agregar</button>
     </div>
 
   </div>
@@ -68,21 +72,21 @@
       <img src="youTube.png" class="logo">
       <h3>YouTube Premium</h3>
       <p class="price">$65</p>
-      <button onclick="comprar('YouTube Premium $65')">Comprar ahora</button>
+      <button onclick="agregarCarrito('YouTube Premium',65)">Agregar</button>
     </div>
 
     <div class="card">
       <img src="fox.png" class="logo">
       <h3>Fox One</h3>
       <p class="price">$65</p>
-      <button onclick="comprar('Fox One $65')">Comprar ahora</button>
+      <button onclick="agregarCarrito('Fox One',65)">Agregar</button>
     </div>
 
     <div class="card">
       <img src="Apple.png" class="logo">
       <h3>Apple TV</h3>
       <p class="price">$45</p>
-      <button onclick="comprar('Apple TV $45')">Comprar ahora</button>
+      <button onclick="agregarCarrito('Apple TV',45)">Agregar</button>
     </div>
 
   </div>
@@ -97,21 +101,28 @@
       <img src="vix.jpg" class="logo">
       <h3>VIX 1 Mes</h3>
       <p class="price">$35</p>
-      <button onclick="comprar('VIX 1 Mes $35')">Comprar ahora</button>
+      <button onclick="agregarCarrito('VIX 1 Mes',35)">Agregar</button>
+    </div>
+
+    <div class="card">
+      <img src="vix.jpg" class="logo">
+      <h3>VIX 2 Meses</h3>
+      <p class="price">$60</p>
+      <button onclick="agregarCarrito('VIX 2 Meses',60)">Agregar</button>
     </div>
 
     <div class="card">
       <img src="crunchyroll.jpeg" class="logo">
       <h3>Crunchyroll</h3>
       <p class="price">$45</p>
-      <button onclick="comprar('Crunchyroll $45')">Comprar ahora</button>
+      <button onclick="agregarCarrito('Crunchyroll',45)">Agregar</button>
     </div>
 
     <div class="card">
       <img src="canva.jpeg" class="logo">
       <h3>Canva Pro</h3>
       <p class="price">$55</p>
-      <button onclick="comprar('Canva Pro $55')">Comprar ahora</button>
+      <button onclick="agregarCarrito('Canva Pro',55)">Agregar</button>
     </div>
 
   </div>
@@ -134,25 +145,88 @@
 
 </main>
 
+<!-- CARRITO -->
+<div class="carrito">
+  <h3>Tu carrito</h3>
+  <ul id="lista-carrito"></ul>
+  <p id="total">Total: $0</p>
+  <button onclick="pagar()">Finalizar compra</button>
+</div>
+
 <footer>
   <p>WhatsApp: +52 1 220 146 7666</p>
   <p>© 2026 Littlefin Stream</p>
 </footer>
 
-<a href="https://wa.me/5212201467666" class="whatsapp-float">💬</a>
-
 <script>
-function comprar(plan) {
-  let numero = "5212201467666";
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  let mensaje = `Hola, me interesa ${plan} en Littlefin Stream.
+function guardarCarrito() {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
 
-¿Está disponible?`;
+function agregarCarrito(nombre, precio) {
+  carrito.push({ nombre, precio });
+  guardarCarrito();
+  actualizarCarrito();
+}
 
-  let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+function eliminarProducto(index) {
+  carrito.splice(index, 1);
+  guardarCarrito();
+  actualizarCarrito();
+}
 
+function actualizarCarrito() {
+  const lista = document.getElementById("lista-carrito");
+  const totalTexto = document.getElementById("total");
+  const contador = document.getElementById("contador");
+
+  lista.innerHTML = "";
+  let total = 0;
+
+  carrito.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ${item.nombre} - $${item.precio}
+      <button onclick="eliminarProducto(${index})">❌</button>
+    `;
+    lista.appendChild(li);
+    total += item.precio;
+  });
+
+  contador.textContent = carrito.length;
+
+  let descuento = 0;
+  if (carrito.length >= 6) descuento = 0.10;
+  else if (carrito.length >= 3) descuento = 0.05;
+
+  let totalFinal = total - (total * descuento);
+
+  totalTexto.textContent = `Total: $${totalFinal.toFixed(2)}`;
+}
+
+function pagar() {
+  if (carrito.length === 0) return alert("Carrito vacío");
+
+  let mensaje = "Hola, quiero comprar:\n\n";
+
+  carrito.forEach(item => {
+    mensaje += `- ${item.nombre} $${item.precio}\n`;
+  });
+
+  let total = carrito.reduce((a,b)=>a+b.precio,0);
+
+  let descuento = carrito.length>=6?0.10:carrito.length>=3?0.05:0;
+  let totalFinal = total - (total*descuento);
+
+  mensaje += `\nTotal: $${totalFinal.toFixed(2)}`;
+
+  let url = `https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
+
+actualizarCarrito();
 </script>
 
 </body>
