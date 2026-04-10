@@ -1,20 +1,19 @@
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-/* GUARDAR */
+/* ================= GUARDAR ================= */
 function guardarCarrito() {
   localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-/* AGREGAR */
+/* ================= AGREGAR ================= */
 function agregarCarrito(nombre, precio) {
   carrito.push({ nombre, precio });
   guardarCarrito();
   actualizarContador();
-
-  alert("Producto agregado al carrito");
+  mostrarToast("Producto agregado 🛒");
 }
 
-/* CONTADOR (INDEX) */
+/* ================= CONTADOR (INDEX) ================= */
 function actualizarContador() {
   const contador = document.getElementById("contador");
   if (contador) {
@@ -22,40 +21,51 @@ function actualizarContador() {
   }
 }
 
-/* MOSTRAR CARRITO (SOLO carrito.html) */
+/* ================= MOSTRAR (CARRITO.HTML) ================= */
 function mostrarCarrito() {
   const lista = document.getElementById("lista-carrito");
+  const subtotalTexto = document.getElementById("subtotal");
+  const descuentoTexto = document.getElementById("descuento");
   const totalTexto = document.getElementById("total");
 
-  if (!lista || !totalTexto) return;
+  // Si no estamos en carrito.html, no hacer nada
+  if (!lista) return;
 
   lista.innerHTML = "";
-  let total = 0;
+
+  let subtotal = 0;
 
   carrito.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      ${item.nombre} - $${item.precio}
-      <button class="eliminar" onclick="eliminarProducto(${index})">X</button>
+    const div = document.createElement("div");
+    div.classList.add("item-carrito");
+
+    div.innerHTML = `
+      <div class="item-info">
+        ${item.nombre}<br>
+        <strong>$${item.precio}</strong>
+      </div>
+      <button class="btn-eliminar" onclick="eliminarProducto(${index})">X</button>
     `;
-    lista.appendChild(li);
-    total += item.precio;
+
+    lista.appendChild(div);
+    subtotal += item.precio;
   });
 
+  /* ===== DESCUENTO ===== */
   let descuento = 0;
   if (carrito.length >= 6) descuento = 0.10;
   else if (carrito.length >= 3) descuento = 0.05;
 
-  let totalFinal = total - (total * descuento);
+  let descuentoMonto = subtotal * descuento;
+  let totalFinal = subtotal - descuentoMonto;
 
-  totalTexto.textContent = `Total: $${totalFinal.toFixed(2)}`;
-
-  if (descuento > 0) {
-    totalTexto.textContent += " (Descuento aplicado)";
-  }
+  /* ===== PINTAR DATOS ===== */
+  if (subtotalTexto) subtotalTexto.textContent = `$${subtotal.toFixed(2)}`;
+  if (descuentoTexto) descuentoTexto.textContent = `-$${descuentoMonto.toFixed(2)}`;
+  if (totalTexto) totalTexto.textContent = `$${totalFinal.toFixed(2)}`;
 }
 
-/* ELIMINAR */
+/* ================= ELIMINAR ================= */
 function eliminarProducto(index) {
   carrito.splice(index, 1);
   guardarCarrito();
@@ -63,7 +73,7 @@ function eliminarProducto(index) {
   actualizarContador();
 }
 
-/* VACIAR */
+/* ================= VACIAR ================= */
 function vaciarCarrito() {
   carrito = [];
   guardarCarrito();
@@ -71,35 +81,57 @@ function vaciarCarrito() {
   actualizarContador();
 }
 
-/* PAGAR */
+/* ================= PAGAR ================= */
 function pagar() {
   if (carrito.length === 0) {
     alert("Carrito vacío");
     return;
   }
 
-  let mensaje = "Hola, quiero comprar:\n\n";
+  let mensaje = "Hola 👋, quiero comprar:\n\n";
 
   carrito.forEach(item => {
-    mensaje += `- ${item.nombre} $${item.precio}\n`;
+    mensaje += `• ${item.nombre} - $${item.precio}\n`;
   });
 
-  let total = carrito.reduce((acc, item) => acc + item.precio, 0);
+  let subtotal = carrito.reduce((acc, item) => acc + item.precio, 0);
 
   let descuento = 0;
   if (carrito.length >= 6) descuento = 0.10;
   else if (carrito.length >= 3) descuento = 0.05;
 
-  let totalFinal = total - (total * descuento);
+  let descuentoMonto = subtotal * descuento;
+  let totalFinal = subtotal - descuentoMonto;
 
-  mensaje += `\nTotal a pagar: $${totalFinal.toFixed(2)}`;
-  mensaje += "\n¿Está disponible?";
+  mensaje += `\nSubtotal: $${subtotal.toFixed(2)}`;
+  mensaje += `\nDescuento: -$${descuentoMonto.toFixed(2)}`;
+  mensaje += `\nTotal: $${totalFinal.toFixed(2)}`;
+  mensaje += "\n\n¿Está disponible?";
 
-  let url = `https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`;
-
-  window.open(url, "_blank");
+  window.open(`https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`);
 }
 
-/* INICIALIZAR */
+/* ================= TOAST (UX PRO) ================= */
+function mostrarToast(texto) {
+  const toast = document.createElement("div");
+  toast.textContent = texto;
+
+  toast.style.position = "fixed";
+  toast.style.bottom = "20px";
+  toast.style.left = "50%";
+  toast.style.transform = "translateX(-50%)";
+  toast.style.background = "#22c55e";
+  toast.style.color = "white";
+  toast.style.padding = "10px 20px";
+  toast.style.borderRadius = "10px";
+  toast.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
+  toast.style.zIndex = "999";
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.remove(), 2000);
+}
+
+/* ================= INIT ================= */
 actualizarContador();
 mostrarCarrito();
