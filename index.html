@@ -22,9 +22,10 @@
     Entrega inmediata · Garantía · Soporte rápido
   </div>
 
-  <div class="cart-icon">
+  <!-- BOTÓN IR A CARRITO -->
+  <a href="carrito.html" class="cart-icon">
     🛒 <span id="contador">0</span>
-  </div>
+  </a>
 
 </header>
 
@@ -128,30 +129,7 @@ Descuento automático: 5% en 3 productos · 10% en 6 productos
   </div>
 </section>
 
-<!-- PAGOS -->
-<section class="section pago">
-  <h2>Métodos de pago</h2>
-  <p>Transferencia bancaria</p>
-  <p>Link de pago</p>
-</section>
-
-<!-- REGLAS -->
-<section class="section reglas">
-  <h2>Reglas</h2>
-  <p>Uso personal</p>
-  <p>No cambiar contraseña</p>
-  <p>1 dispositivo</p>
-</section>
-
 </main>
-
-<!-- CARRITO -->
-<div class="carrito">
-  <h3>Tu carrito</h3>
-  <ul id="lista-carrito"></ul>
-  <p id="total">Total: $0</p>
-  <button onclick="pagar()">Finalizar compra</button>
-</div>
 
 <footer>
   <p>WhatsApp: +52 1 220 146 7666</p>
@@ -168,65 +146,14 @@ function guardarCarrito() {
 function agregarCarrito(nombre, precio) {
   carrito.push({ nombre, precio });
   guardarCarrito();
-  actualizarCarrito();
+  actualizarContador();
 }
 
-function eliminarProducto(index) {
-  carrito.splice(index, 1);
-  guardarCarrito();
-  actualizarCarrito();
+function actualizarContador() {
+  document.getElementById("contador").textContent = carrito.length;
 }
 
-function actualizarCarrito() {
-  const lista = document.getElementById("lista-carrito");
-  const totalTexto = document.getElementById("total");
-  const contador = document.getElementById("contador");
-
-  lista.innerHTML = "";
-  let total = 0;
-
-  carrito.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      ${item.nombre} - $${item.precio}
-      <button onclick="eliminarProducto(${index})">❌</button>
-    `;
-    lista.appendChild(li);
-    total += item.precio;
-  });
-
-  contador.textContent = carrito.length;
-
-  let descuento = 0;
-  if (carrito.length >= 6) descuento = 0.10;
-  else if (carrito.length >= 3) descuento = 0.05;
-
-  let totalFinal = total - (total * descuento);
-
-  totalTexto.textContent = `Total: $${totalFinal.toFixed(2)}`;
-}
-
-function pagar() {
-  if (carrito.length === 0) return alert("Carrito vacío");
-
-  let mensaje = "Hola, quiero comprar:\n\n";
-
-  carrito.forEach(item => {
-    mensaje += `- ${item.nombre} $${item.precio}\n`;
-  });
-
-  let total = carrito.reduce((a,b)=>a+b.precio,0);
-
-  let descuento = carrito.length>=6?0.10:carrito.length>=3?0.05:0;
-  let totalFinal = total - (total*descuento);
-
-  mensaje += `\nTotal: $${totalFinal.toFixed(2)}`;
-
-  let url = `https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`;
-  window.open(url, "_blank");
-}
-
-actualizarCarrito();
+actualizarContador();
 </script>
 
 </body>
