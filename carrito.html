@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrito - Littlefin</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="header">
+  <h1>Tu carrito</h1>
+</header>
+
+<main>
+
+<div class="carrito">
+  <ul id="lista-carrito"></ul>
+  <p id="total">Total: $0</p>
+  <button onclick="pagar()">Finalizar compra</button>
+</div>
+
+</main>
+
+<script>
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+function actualizarCarrito() {
+  const lista = document.getElementById("lista-carrito");
+  const totalTexto = document.getElementById("total");
+
+  lista.innerHTML = "";
+  let total = 0;
+
+  carrito.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.nombre} - $${item.precio}`;
+    lista.appendChild(li);
+    total += item.precio;
+  });
+
+  let descuento = carrito.length >= 6 ? 0.10 :
+                  carrito.length >= 3 ? 0.05 : 0;
+
+  let totalFinal = total - (total * descuento);
+
+  totalTexto.textContent = `Total: $${totalFinal.toFixed(2)}`;
+}
+
+function pagar() {
+  let mensaje = "Hola, quiero comprar:\n\n";
+
+  carrito.forEach(item => {
+    mensaje += `- ${item.nombre} $${item.precio}\n`;
+  });
+
+  let total = carrito.reduce((a,b)=>a+b.precio,0);
+  let descuento = carrito.length>=6?0.10:carrito.length>=3?0.05:0;
+  let totalFinal = total - (total*descuento);
+
+  mensaje += `\nTotal: $${totalFinal.toFixed(2)}`;
+
+  let url = `https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
+
+actualizarCarrito();
+</script>
+
+</body>
+</html>
