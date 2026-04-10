@@ -19,10 +19,9 @@
   <p class="subtitle">Streaming premium al mejor precio</p>
 
   <div class="top-info">
-    Entrega inmediata · Garantía · Soporte rápido
+    ✔ Entrega inmediata &nbsp; ✔ Garantía &nbsp; ✔ Soporte rápido
   </div>
 
-  <!-- BOTÓN IR A CARRITO -->
   <a href="carrito.html" class="cart-icon">
     🛒 <span id="contador">0</span>
   </a>
@@ -30,35 +29,35 @@
 </header>
 
 <p class="promo">
-Descuento automático: 5% en 3 productos · 10% en 6 productos
+🔥 Ahorra más: 5% en 3 productos · 10% en 6 productos
 </p>
 
 <main>
 
 <!-- MÁS VENDIDOS -->
 <section class="section">
-  <h2>Más vendidos</h2>
+  <h2>🔥 Más vendidos</h2>
   <div class="grid">
 
     <div class="card">
       <img src="Netflix.png" class="logo">
       <h3>Netflix 1 Mes</h3>
       <p class="price">$110</p>
-      <button onclick="agregarCarrito('Netflix 1 Mes',110)">Agregar</button>
+      <button onclick="agregarCarrito('Netflix 1 Mes',110)">Agregar al carrito</button>
     </div>
 
     <div class="card">
       <img src="disney.jpg" class="logo">
       <h3>Disney+ 1 Mes</h3>
       <p class="price">$70</p>
-      <button onclick="agregarCarrito('Disney+ 1 Mes',70)">Agregar</button>
+      <button onclick="agregarCarrito('Disney+ 1 Mes',70)">Agregar al carrito</button>
     </div>
 
     <div class="card">
       <img src="prime.jpeg" class="logo">
       <h3>Prime Video</h3>
       <p class="price">$40</p>
-      <button onclick="agregarCarrito('Prime Video',40)">Agregar</button>
+      <button onclick="agregarCarrito('Prime Video',40)">Agregar al carrito</button>
     </div>
 
   </div>
@@ -66,28 +65,28 @@ Descuento automático: 5% en 3 productos · 10% en 6 productos
 
 <!-- RECOMENDADO -->
 <section class="section">
-  <h2>Recomendado</h2>
+  <h2>⭐ Recomendado</h2>
   <div class="grid">
 
     <div class="card">
       <img src="youTube.png" class="logo">
       <h3>YouTube Premium</h3>
       <p class="price">$65</p>
-      <button onclick="agregarCarrito('YouTube Premium',65)">Agregar</button>
+      <button onclick="agregarCarrito('YouTube Premium',65)">Agregar al carrito</button>
     </div>
 
     <div class="card">
       <img src="fox.png" class="logo">
       <h3>Fox One</h3>
       <p class="price">$65</p>
-      <button onclick="agregarCarrito('Fox One',65)">Agregar</button>
+      <button onclick="agregarCarrito('Fox One',65)">Agregar al carrito</button>
     </div>
 
     <div class="card">
       <img src="Apple.png" class="logo">
       <h3>Apple TV</h3>
       <p class="price">$45</p>
-      <button onclick="agregarCarrito('Apple TV',45)">Agregar</button>
+      <button onclick="agregarCarrito('Apple TV',45)">Agregar al carrito</button>
     </div>
 
   </div>
@@ -95,35 +94,35 @@ Descuento automático: 5% en 3 productos · 10% en 6 productos
 
 <!-- ECONÓMICO -->
 <section class="section">
-  <h2>Económico</h2>
+  <h2>💸 Económico</h2>
   <div class="grid">
 
     <div class="card">
       <img src="vix.jpg" class="logo">
       <h3>VIX 1 Mes</h3>
       <p class="price">$35</p>
-      <button onclick="agregarCarrito('VIX 1 Mes',35)">Agregar</button>
+      <button onclick="agregarCarrito('VIX 1 Mes',35)">Agregar al carrito</button>
     </div>
 
     <div class="card">
       <img src="vix.jpg" class="logo">
       <h3>VIX 2 Meses</h3>
       <p class="price">$60</p>
-      <button onclick="agregarCarrito('VIX 2 Meses',60)">Agregar</button>
+      <button onclick="agregarCarrito('VIX 2 Meses',60)">Agregar al carrito</button>
     </div>
 
     <div class="card">
       <img src="crunchyroll.jpeg" class="logo">
       <h3>Crunchyroll</h3>
       <p class="price">$45</p>
-      <button onclick="agregarCarrito('Crunchyroll',45)">Agregar</button>
+      <button onclick="agregarCarrito('Crunchyroll',45)">Agregar al carrito</button>
     </div>
 
     <div class="card">
       <img src="canva.jpeg" class="logo">
       <h3>Canva Pro</h3>
       <p class="price">$55</p>
-      <button onclick="agregarCarrito('Canva Pro',55)">Agregar</button>
+      <button onclick="agregarCarrito('Canva Pro',55)">Agregar al carrito</button>
     </div>
 
   </div>
@@ -132,29 +131,12 @@ Descuento automático: 5% en 3 productos · 10% en 6 productos
 </main>
 
 <footer>
-  <p>WhatsApp: +52 1 220 146 7666</p>
+  <p>📲 WhatsApp: +52 1 220 146 7666</p>
   <p>© 2026 Littlefin Stream</p>
 </footer>
 
-<script>
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-function guardarCarrito() {
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-}
-
-function agregarCarrito(nombre, precio) {
-  carrito.push({ nombre, precio });
-  guardarCarrito();
-  actualizarContador();
-}
-
-function actualizarContador() {
-  document.getElementById("contador").textContent = carrito.length;
-}
-
-actualizarContador();
-</script>
+<!-- SCRIPT GLOBAL -->
+<script src="script.js"></script>
 
 </body>
 </html>
