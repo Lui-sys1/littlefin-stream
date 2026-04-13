@@ -5,6 +5,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Carrito - Littlefin</title>
 <link rel="stylesheet" href="styles.css">
+
+<style>
+/* 🔥 MÉTODO DE PAGO */
+.metodo-pago {
+  margin-top: 20px;
+  padding: 15px;
+  background: #020617;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.metodo-pago p {
+  margin-bottom: 10px;
+  color: #94a3b8;
+}
+
+.metodo-pago .opciones {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.metodo-pago button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #1f2937;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.metodo-pago button:hover {
+  transform: scale(1.05);
+}
+
+.metodo-pago button.activo {
+  background: #22c55e;
+}
+
+/* Animación suave */
+.metodo-pago button:active {
+  transform: scale(0.95);
+}
+</style>
+
 </head>
 
 <body>
@@ -28,6 +75,21 @@
     <h3>Total <span id="total">$0</span></h3>
   </div>
 
+  <!-- 🔥 NUEVO: MÉTODO DE PAGO -->
+  <div class="metodo-pago">
+    <p>Selecciona tu método de pago</p>
+
+    <div class="opciones">
+      <button onclick="seleccionarPago('Transferencia')" id="btn-transferencia">
+        💸 Transferencia
+      </button>
+
+      <button onclick="seleccionarPago('Link de pago')" id="btn-link">
+        🔗 Link de pago
+      </button>
+    </div>
+  </div>
+
   <button onclick="pagar()" class="btn-pagar">Finalizar compra</button>
   <button onclick="vaciarCarrito()" class="btn-vaciar">Vaciar carrito</button>
 
@@ -36,6 +98,19 @@
 </main>
 
 <script src="script.js"></script>
+
+<script>
+// 🔥 MARCAR MÉTODO GUARDADO AL ENTRAR
+const metodoGuardado = localStorage.getItem("metodoPago");
+
+if (metodoGuardado) {
+  if (metodoGuardado === "Transferencia") {
+    document.getElementById("btn-transferencia")?.classList.add("activo");
+  } else {
+    document.getElementById("btn-link")?.classList.add("activo");
+  }
+}
+</script>
 
 </body>
 </html>
