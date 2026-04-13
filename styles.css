@@ -48,7 +48,18 @@ body {
   font-size: 14px;
   color: #16a34a;
 }
+.logo-principal {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
 /* ================= CARRITO ICON ================= */
 .cart-icon {
   position: absolute;
