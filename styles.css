@@ -60,12 +60,12 @@ body {
   border-radius: 999px;
   text-decoration: none;
   color: #0f172a;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: 0.2s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transition: 0.25s;
 }
 
 .cart-icon:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* ================= PROMO ================= */
@@ -103,11 +103,11 @@ body {
   border-radius: 20px;
   text-align: center;
   transition: 0.3s;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px) scale(1.02);
 }
 
 /* ================= LOGOS ================= */
@@ -139,11 +139,12 @@ button {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.25s;
 }
 
 button:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  box-shadow: 0 6px 15px rgba(34,197,94,0.4);
 }
 
 /* ================= FOOTER ================= */
@@ -155,7 +156,7 @@ footer {
 }
 
 /* ===================================================== */
-/* 🛒 SOLO CARRITO.HTML (NO AFECTA INDEX) */
+/* 🛒 SOLO CARRITO.HTML */
 /* ===================================================== */
 
 .carrito-page {
@@ -164,7 +165,7 @@ footer {
   background: white;
   padding: 20px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 /* ITEMS */
@@ -181,6 +182,11 @@ footer {
   background: #f8fafc;
   padding: 12px;
   border-radius: 12px;
+  transition: 0.2s;
+}
+
+.item-carrito:hover {
+  transform: scale(1.02);
 }
 
 /* INFO */
@@ -212,10 +218,44 @@ footer {
   margin-bottom: 5px;
 }
 
-/* BOTONES CARRITO */
+/* ================= MÉTODO DE PAGO ================= */
+.metodo-pago {
+  margin-top: 20px;
+  padding: 15px;
+  background: #020617;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+}
+
+.metodo-pago p {
+  margin-bottom: 10px;
+  color: #94a3b8;
+}
+
+.metodo-pago .opciones {
+  display: flex;
+  gap: 10px;
+}
+
+.metodo-pago button {
+  flex: 1;
+  background: #1f2937;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.metodo-pago button.activo {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(34,197,94,0.5);
+}
+
+/* BOTONES */
 .btn-pagar {
   width: 100%;
   margin-top: 15px;
+  font-size: 16px;
 }
 
 .btn-vaciar {
