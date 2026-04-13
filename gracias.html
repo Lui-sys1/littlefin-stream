@@ -20,7 +20,11 @@ body {
 /* CONTENEDOR */
 .container {
   text-align: center;
-  padding: 30px;
+  padding: 40px 30px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
 }
 
 /* CHECK */
@@ -38,7 +42,7 @@ body {
 /* TITULO */
 h1 {
   margin-top: 20px;
-  font-size: 24px;
+  font-size: 26px;
 }
 
 /* TEXTO */
@@ -47,24 +51,33 @@ p {
   margin-top: 10px;
 }
 
+/* ID PEDIDO */
+.pedido {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #22c55e;
+  font-weight: bold;
+}
+
 /* BOTÓN */
 .btn {
   margin-top: 25px;
   display: inline-block;
-  padding: 12px 25px;
+  padding: 14px 30px;
   background: #22c55e;
   color: white;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: bold;
   transition: 0.3s;
 }
 
 .btn:hover {
   background: #16a34a;
+  transform: scale(1.05);
 }
 
-/* SPINNER OPCIONAL */
+/* SPINNER */
 .loader {
   margin-top: 20px;
   border: 4px solid #1f2937;
@@ -79,6 +92,13 @@ p {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* CONTADOR */
+.contador {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #94a3b8;
+}
 </style>
 
 </head>
@@ -92,10 +112,39 @@ p {
 
   <p>Serás atendido por WhatsApp en unos momentos.</p>
 
+  <!-- ID dinámico -->
+  <div class="pedido">ID de pedido: <span id="pedidoID">---</span></div>
+
   <div class="loader"></div>
+
+  <div class="contador">
+    Regresando automáticamente en <span id="segundos">5</span>...
+  </div>
 
   <a href="index.html" class="btn">Volver a la tienda</a>
 </div>
+
+<script>
+// 🔥 Mostrar ID del pedido
+const pedido = localStorage.getItem("ultimoPedido");
+if (pedido) {
+  document.getElementById("pedidoID").textContent = pedido;
+}
+
+// 🔥 Auto redirección
+let tiempo = 5;
+const contador = document.getElementById("segundos");
+
+const intervalo = setInterval(() => {
+  tiempo--;
+  contador.textContent = tiempo;
+
+  if (tiempo <= 0) {
+    clearInterval(intervalo);
+    window.location.href = "index.html";
+  }
+}, 1000);
+</script>
 
 </body>
 </html>
