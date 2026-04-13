@@ -91,11 +91,25 @@ function obtenerFecha() {
   return hoy.toLocaleDateString("es-MX");
 }
 
-/* ================= PAGAR (VERSIÓN PRO) ================= */
+/* ================= PAGAR (MEJORADO) ================= */
 function pagar() {
   if (carrito.length === 0) {
     alert("Carrito vacío");
     return;
+  }
+
+  // 🔥 NUEVO: obtener o pedir nombre
+  let nombreCliente = localStorage.getItem("nombreCliente");
+
+  if (!nombreCliente) {
+    nombreCliente = prompt("Ingresa tu nombre:");
+    
+    if (!nombreCliente || nombreCliente.trim() === "") {
+      alert("Por favor ingresa tu nombre");
+      return;
+    }
+
+    localStorage.setItem("nombreCliente", nombreCliente);
   }
 
   let idPedido = generarID();
@@ -106,7 +120,7 @@ function pagar() {
   mensaje += `📅 *Fecha:* ${fecha}\n\n`;
 
   mensaje += "👤 *Cliente:*\n";
-  mensaje += "Cliente Web\n\n";
+  mensaje += `${nombreCliente}\n\n`;
 
   mensaje += "🛒 *Productos solicitados:*\n";
 
