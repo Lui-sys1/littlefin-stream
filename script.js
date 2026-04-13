@@ -89,7 +89,7 @@ function obtenerFecha() {
   return hoy.toLocaleDateString("es-MX");
 }
 
-/* ================= PAGAR (PRO FINAL) ================= */
+/* ================= PAGAR (CON MÉTODO DE PAGO) ================= */
 function pagar() {
   if (carrito.length === 0) {
     alert("Carrito vacío");
@@ -109,10 +109,27 @@ function pagar() {
     localStorage.setItem("nombreCliente", nombreCliente);
   }
 
+  // 🔥 NUEVO: método de pago
+  let metodoPago = localStorage.getItem("metodoPago");
+
+  if (!metodoPago) {
+    metodoPago = prompt("¿Cómo deseas pagar?\n\n1. Transferencia\n2. Link de pago");
+
+    if (!metodoPago) {
+      alert("Selecciona un método de pago");
+      return;
+    }
+
+    if (metodoPago === "1") metodoPago = "Transferencia";
+    else if (metodoPago === "2") metodoPago = "Link de pago";
+    else metodoPago = "Transferencia";
+
+    localStorage.setItem("metodoPago", metodoPago);
+  }
+
   let idPedido = generarID();
   let fecha = obtenerFecha();
 
-  // 🔥 guardar pedido para usarlo en gracias.html
   localStorage.setItem("ultimoPedido", idPedido);
 
   let mensaje = "🧾 *Nuevo Pedido - Littlefin Stream*\n\n";
@@ -142,12 +159,12 @@ function pagar() {
   mensaje += `\nDescuento aplicado: -$${descuentoMonto.toFixed(2)}`;
   mensaje += `\nTotal a pagar: *$${totalFinal.toFixed(2)}*`;
 
-  mensaje += `\n\n💳 *Método de pago:* Transferencia o link de pago`;
+  // 🔥 MOSTRAR MÉTODO REAL
+  mensaje += `\n\n💳 *Método de pago:* ${metodoPago}`;
 
   mensaje += `\n\n📌 *Solicitud:*`;
   mensaje += `\n¿Me confirmas disponibilidad y datos para realizar el pago?`;
 
-  // 🔥 LINK A TU PÁGINA PRO
   mensaje += `\n\n🌐 Confirmación de pedido:\nhttps://www.littlefinstream.com/gracias.html`;
 
   mensaje += `\n\n🔒 Pedido generado automáticamente desde la web`;
