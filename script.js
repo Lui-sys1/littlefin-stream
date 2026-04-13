@@ -91,7 +91,7 @@ function obtenerFecha() {
   return hoy.toLocaleDateString("es-MX");
 }
 
-/* ================= PAGAR (PRO CON ANIMACIÓN) ================= */
+/* ================= PAGAR (FIX BUG + UX PRO) ================= */
 function pagar() {
   if (carrito.length === 0) {
     alert("Carrito vacío");
@@ -149,58 +149,18 @@ function pagar() {
   mensaje += `\n\n🔒 Pedido generado automáticamente desde la web`;
   mensaje += `\nGracias 🙌`;
 
-  // 🔥 OVERLAY PRO
-  const overlay = document.createElement("div");
-  overlay.style.position = "fixed";
-  overlay.style.top = "0";
-  overlay.style.left = "0";
-  overlay.style.width = "100%";
-  overlay.style.height = "100%";
-  overlay.style.background = "rgba(0,0,0,0.85)";
-  overlay.style.display = "flex";
-  overlay.style.flexDirection = "column";
-  overlay.style.alignItems = "center";
-  overlay.style.justifyContent = "center";
-  overlay.style.color = "white";
-  overlay.style.zIndex = "9999";
-  overlay.innerHTML = `
-    <div style="font-size:18px;margin-bottom:20px;">Procesando pedido...</div>
-    <div class="loader"></div>
-  `;
-  document.body.appendChild(overlay);
+  // 🔥 UX feedback inmediato
+  mostrarToast("Redirigiendo a WhatsApp...");
 
-  // 🔥 CSS loader
-  const style = document.createElement("style");
-  style.innerHTML = `
-    .loader {
-      border: 5px solid #1f2937;
-      border-top: 5px solid #22c55e;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  `;
-  document.head.appendChild(style);
+  // 🔥 limpiar carrito ANTES (evita bugs visuales)
+  vaciarCarrito();
 
-  // 🔥 Paso 1: éxito visual
+  // 🔥 redirección segura (SIN BUG)
+  const url = `https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`;
+
   setTimeout(() => {
-    overlay.innerHTML = `
-      <div style="font-size:40px;">✅</div>
-      <div style="margin-top:10px;font-size:18px;">Pedido enviado</div>
-    `;
-  }, 1500);
-
-  // 🔥 Paso 2: redirigir + limpiar carrito
-  setTimeout(() => {
-    const url = `https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`;
     window.location.href = url;
-    vaciarCarrito();
-  }, 2600);
+  }, 800);
 }
 
 /* ================= TOAST ================= */
