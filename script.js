@@ -98,7 +98,6 @@ function pagar() {
     return;
   }
 
-  // 🔥 NUEVO: obtener o pedir nombre
   let nombreCliente = localStorage.getItem("nombreCliente");
 
   if (!nombreCliente) {
@@ -150,7 +149,16 @@ function pagar() {
   mensaje += `\n\n🔒 Pedido generado automáticamente desde la web`;
   mensaje += `\nGracias 🙌`;
 
+  // 🔥 NUEVO: mensaje UX antes de salir
+  mostrarToast("Redirigiendo a WhatsApp...");
+
   window.open(`https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`);
+
+  // 🔥 NUEVO: limpiar carrito + confirmar pedido
+  setTimeout(() => {
+    vaciarCarrito();
+    mostrarToast("✅ Pedido enviado correctamente");
+  }, 1200);
 }
 
 /* ================= TOAST ================= */
