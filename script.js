@@ -21,7 +21,7 @@ function actualizarContador() {
   }
 }
 
-/* ================= MÉTODO DE PAGO (NUEVO) ================= */
+/* ================= MÉTODO DE PAGO ================= */
 function seleccionarPago(metodo) {
   localStorage.setItem("metodoPago", metodo);
 
@@ -103,9 +103,15 @@ function obtenerFecha() {
 }
 
 /* ================= PAGAR ================= */
+let pagando = false; // 🔥 evitar doble click
+
 function pagar() {
+  if (pagando) return; // bloqueo
+  pagando = true;
+
   if (carrito.length === 0) {
     alert("Carrito vacío");
+    pagando = false;
     return;
   }
 
@@ -113,15 +119,18 @@ function pagar() {
 
   if (!nombreCliente) {
     nombreCliente = prompt("Ingresa tu nombre:");
-    if (!nombreCliente) return;
+    if (!nombreCliente) {
+      pagando = false;
+      return;
+    }
     localStorage.setItem("nombreCliente", nombreCliente);
   }
 
-  // 🔥 método desde selector
   let metodoPago = localStorage.getItem("metodoPago");
 
   if (!metodoPago) {
     alert("Selecciona un método de pago");
+    pagando = false;
     return;
   }
 
@@ -133,7 +142,6 @@ function pagar() {
   let mensaje = "🧾 *Nuevo Pedido - Littlefin Stream*\n\n";
   mensaje += `📦 *ID de pedido:* ${idPedido}\n`;
   mensaje += `📅 *Fecha:* ${fecha}\n\n`;
-
   mensaje += `👤 *Cliente:*\n${nombreCliente}\n\n`;
 
   mensaje += "🛒 *Productos:*\n";
@@ -141,7 +149,7 @@ function pagar() {
     mensaje += `• ${item.nombre} - $${item.precio}\n`;
   });
 
-  let subtotal = carrito.reduce((a, b) => a + b.precio, 0);
+  let subtotal = carrito.reduce((a, b) => a + (b.precio || 0), 0);
   let descuento = carrito.length >= 6 ? 0.10 : carrito.length >= 3 ? 0.05 : 0;
 
   let descuentoMonto = subtotal * descuento;
@@ -152,22 +160,65 @@ function pagar() {
   mensaje += `\nTotal: *$${totalFinal.toFixed(2)}*`;
 
   mensaje += `\n\n💳 Método de pago: ${metodoPago}`;
-
   mensaje += `\n\n📌 ¿Me confirmas disponibilidad?`;
-
   mensaje += `\n\n🌐 https://www.littlefinstream.com/gracias.html`;
-
   mensaje += `\n\n🙏 Gracias por tu pedido`;
 
-  mostrarToast("Redirigiendo...");
+  // 🔥 PANTALLA PROCESANDO
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100%";
+  overlay.style.height = "100%";
+  overlay.style.background = "rgba(0,0,0,0.85)";
+  overlay.style.display = "flex";
+  overlay.style.flexDirection = "column";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.color = "white";
+  overlay.style.zIndex = "9999";
 
-  vaciarCarrito();
+  overlay.innerHTML = `
+    <div style="font-size:18px;margin-bottom:20px;">Procesando pedido...</div>
+    <div class="loader"></div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  // loader
+  const style = document.createElement("style");
+  style.innerHTML = `
+    .loader {
+      border: 5px solid #1f2937;
+      border-top: 5px solid #22c55e;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // 🔥 paso 1: éxito visual
+  setTimeout(() => {
+    overlay.innerHTML = `
+      <div style="font-size:50px;">✅</div>
+      <div style="margin-top:10px;">Pedido enviado</div>
+    `;
+  }, 1500);
 
   const url = `https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`;
 
+  // 🔥 paso 2: limpiar + redirigir
   setTimeout(() => {
+    vaciarCarrito();
     window.location.href = url;
-  }, 800);
+  }, 2600);
 }
 
 /* ================= TOAST ================= */
