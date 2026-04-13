@@ -28,7 +28,6 @@ function mostrarCarrito() {
   const descuentoTexto = document.getElementById("descuento");
   const totalTexto = document.getElementById("total");
 
-  // Si no estamos en carrito.html, no hacer nada
   if (!lista) return;
 
   lista.innerHTML = "";
@@ -81,14 +80,35 @@ function vaciarCarrito() {
   actualizarContador();
 }
 
-/* ================= PAGAR ================= */
+/* ================= GENERAR ID ================= */
+function generarID() {
+  return "LF-" + Math.floor(10000 + Math.random() * 90000);
+}
+
+/* ================= FECHA ================= */
+function obtenerFecha() {
+  const hoy = new Date();
+  return hoy.toLocaleDateString("es-MX");
+}
+
+/* ================= PAGAR (VERSIÓN PRO) ================= */
 function pagar() {
   if (carrito.length === 0) {
     alert("Carrito vacío");
     return;
   }
 
-  let mensaje = "Hola 👋, quiero comprar:\n\n";
+  let idPedido = generarID();
+  let fecha = obtenerFecha();
+
+  let mensaje = "🧾 *Nuevo Pedido - Littlefin Stream*\n\n";
+  mensaje += `📦 *ID de pedido:* ${idPedido}\n`;
+  mensaje += `📅 *Fecha:* ${fecha}\n\n`;
+
+  mensaje += "👤 *Cliente:*\n";
+  mensaje += "Cliente Web\n\n";
+
+  mensaje += "🛒 *Productos solicitados:*\n";
 
   carrito.forEach(item => {
     mensaje += `• ${item.nombre} - $${item.precio}\n`;
@@ -103,15 +123,23 @@ function pagar() {
   let descuentoMonto = subtotal * descuento;
   let totalFinal = subtotal - descuentoMonto;
 
+  mensaje += `\n💰 *Resumen de pago:*`;
   mensaje += `\nSubtotal: $${subtotal.toFixed(2)}`;
-  mensaje += `\nDescuento: -$${descuentoMonto.toFixed(2)}`;
-  mensaje += `\nTotal: $${totalFinal.toFixed(2)}`;
-  mensaje += "\n\n¿Está disponible?";
+  mensaje += `\nDescuento aplicado: -$${descuentoMonto.toFixed(2)}`;
+  mensaje += `\nTotal a pagar: *$${totalFinal.toFixed(2)}*`;
+
+  mensaje += `\n\n💳 *Método de pago:* Transferencia o link de pago`;
+
+  mensaje += `\n\n📌 *Solicitud:*`;
+  mensaje += `\n¿Me confirmas disponibilidad y datos para realizar el pago?`;
+
+  mensaje += `\n\n🔒 Pedido generado automáticamente desde la web`;
+  mensaje += `\nGracias 🙌`;
 
   window.open(`https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`);
 }
 
-/* ================= TOAST (UX PRO) ================= */
+/* ================= TOAST ================= */
 function mostrarToast(texto) {
   const toast = document.createElement("div");
   toast.textContent = texto;
