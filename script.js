@@ -103,10 +103,10 @@ function obtenerFecha() {
 }
 
 /* ================= PAGAR ================= */
-let pagando = false; // 🔥 evitar doble click
+let pagando = false;
 
 function pagar() {
-  if (pagando) return; // bloqueo
+  if (pagando) return;
   pagando = true;
 
   if (carrito.length === 0) {
@@ -164,8 +164,10 @@ function pagar() {
   mensaje += `\n\n🌐 https://www.littlefinstream.com/gracias.html`;
   mensaje += `\n\n🙏 Gracias por tu pedido`;
 
-  // 🔥 PANTALLA PROCESANDO
+  // 🔥 OVERLAY CON ID (FIX BUG)
   const overlay = document.createElement("div");
+  overlay.id = "overlay-proceso";
+
   overlay.style.position = "fixed";
   overlay.style.top = "0";
   overlay.style.left = "0";
@@ -204,7 +206,6 @@ function pagar() {
   `;
   document.head.appendChild(style);
 
-  // 🔥 paso 1: éxito visual
   setTimeout(() => {
     overlay.innerHTML = `
       <div style="font-size:50px;">✅</div>
@@ -214,12 +215,29 @@ function pagar() {
 
   const url = `https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`;
 
-  // 🔥 paso 2: limpiar + redirigir
   setTimeout(() => {
     vaciarCarrito();
     window.location.href = url;
   }, 2600);
 }
+
+/* ================= FIX REGRESO ================= */
+window.addEventListener("pageshow", () => {
+  const overlay = document.querySelector("#overlay-proceso");
+  if (overlay) overlay.remove();
+
+  pagando = false;
+  mostrarCarrito();
+});
+
+/* ================= EXTRA PRO ================= */
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+    const overlay = document.querySelector("#overlay-proceso");
+    if (overlay) overlay.remove();
+    pagando = false;
+  }
+});
 
 /* ================= TOAST ================= */
 function mostrarToast(texto) {
