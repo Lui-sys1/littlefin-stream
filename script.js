@@ -50,7 +50,6 @@ function mostrarCarrito() {
     subtotal += item.precio;
   });
 
-  /* ===== DESCUENTO ===== */
   let descuento = 0;
   if (carrito.length >= 6) descuento = 0.10;
   else if (carrito.length >= 3) descuento = 0.05;
@@ -58,7 +57,6 @@ function mostrarCarrito() {
   let descuentoMonto = subtotal * descuento;
   let totalFinal = subtotal - descuentoMonto;
 
-  /* ===== PINTAR DATOS ===== */
   if (subtotalTexto) subtotalTexto.textContent = `$${subtotal.toFixed(2)}`;
   if (descuentoTexto) descuentoTexto.textContent = `-$${descuentoMonto.toFixed(2)}`;
   if (totalTexto) totalTexto.textContent = `$${totalFinal.toFixed(2)}`;
@@ -91,7 +89,7 @@ function obtenerFecha() {
   return hoy.toLocaleDateString("es-MX");
 }
 
-/* ================= PAGAR (FIX BUG + UX PRO) ================= */
+/* ================= PAGAR (PRO FINAL) ================= */
 function pagar() {
   if (carrito.length === 0) {
     alert("Carrito vacío");
@@ -113,6 +111,9 @@ function pagar() {
 
   let idPedido = generarID();
   let fecha = obtenerFecha();
+
+  // 🔥 guardar pedido para usarlo en gracias.html
+  localStorage.setItem("ultimoPedido", idPedido);
 
   let mensaje = "🧾 *Nuevo Pedido - Littlefin Stream*\n\n";
   mensaje += `📦 *ID de pedido:* ${idPedido}\n`;
@@ -146,16 +147,16 @@ function pagar() {
   mensaje += `\n\n📌 *Solicitud:*`;
   mensaje += `\n¿Me confirmas disponibilidad y datos para realizar el pago?`;
 
+  // 🔥 LINK A TU PÁGINA PRO
+  mensaje += `\n\n🌐 Confirmación de pedido:\nhttps://www.littlefinstream.com/gracias.html`;
+
   mensaje += `\n\n🔒 Pedido generado automáticamente desde la web`;
   mensaje += `\nGracias 🙌`;
 
-  // 🔥 UX feedback inmediato
   mostrarToast("Redirigiendo a WhatsApp...");
 
-  // 🔥 limpiar carrito ANTES (evita bugs visuales)
   vaciarCarrito();
 
-  // 🔥 redirección segura (SIN BUG)
   const url = `https://wa.me/5212201467666?text=${encodeURIComponent(mensaje)}`;
 
   setTimeout(() => {
