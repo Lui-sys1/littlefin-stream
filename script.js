@@ -13,7 +13,7 @@ function agregarCarrito(nombre, precio) {
   mostrarToast("Producto agregado 🛒");
 }
 
-/* ================= CONTADOR (INDEX) ================= */
+/* ================= CONTADOR ================= */
 function actualizarContador() {
   const contador = document.getElementById("contador");
   if (contador) {
@@ -21,7 +21,21 @@ function actualizarContador() {
   }
 }
 
-/* ================= MOSTRAR (CARRITO.HTML) ================= */
+/* ================= MÉTODO DE PAGO (NUEVO) ================= */
+function seleccionarPago(metodo) {
+  localStorage.setItem("metodoPago", metodo);
+
+  document.getElementById("btn-transferencia")?.classList.remove("activo");
+  document.getElementById("btn-link")?.classList.remove("activo");
+
+  if (metodo === "Transferencia") {
+    document.getElementById("btn-transferencia")?.classList.add("activo");
+  } else {
+    document.getElementById("btn-link")?.classList.add("activo");
+  }
+}
+
+/* ================= MOSTRAR ================= */
 function mostrarCarrito() {
   const lista = document.getElementById("lista-carrito");
   const subtotalTexto = document.getElementById("subtotal");
@@ -43,7 +57,7 @@ function mostrarCarrito() {
         ${item.nombre}<br>
         <strong>$${item.precio}</strong>
       </div>
-      <button class="btn-eliminar" onclick="eliminarProducto(${index})">X</button>
+      <button onclick="eliminarProducto(${index})">X</button>
     `;
 
     lista.appendChild(div);
@@ -85,11 +99,10 @@ function generarID() {
 
 /* ================= FECHA ================= */
 function obtenerFecha() {
-  const hoy = new Date();
-  return hoy.toLocaleDateString("es-MX");
+  return new Date().toLocaleDateString("es-MX");
 }
 
-/* ================= PAGAR (CON MÉTODO DE PAGO) ================= */
+/* ================= PAGAR ================= */
 function pagar() {
   if (carrito.length === 0) {
     alert("Carrito vacío");
@@ -100,31 +113,16 @@ function pagar() {
 
   if (!nombreCliente) {
     nombreCliente = prompt("Ingresa tu nombre:");
-    
-    if (!nombreCliente || nombreCliente.trim() === "") {
-      alert("Por favor ingresa tu nombre");
-      return;
-    }
-
+    if (!nombreCliente) return;
     localStorage.setItem("nombreCliente", nombreCliente);
   }
 
-  // 🔥 NUEVO: método de pago
+  // 🔥 método desde selector
   let metodoPago = localStorage.getItem("metodoPago");
 
   if (!metodoPago) {
-    metodoPago = prompt("¿Cómo deseas pagar?\n\n1. Transferencia\n2. Link de pago");
-
-    if (!metodoPago) {
-      alert("Selecciona un método de pago");
-      return;
-    }
-
-    if (metodoPago === "1") metodoPago = "Transferencia";
-    else if (metodoPago === "2") metodoPago = "Link de pago";
-    else metodoPago = "Transferencia";
-
-    localStorage.setItem("metodoPago", metodoPago);
+    alert("Selecciona un método de pago");
+    return;
   }
 
   let idPedido = generarID();
@@ -136,41 +134,32 @@ function pagar() {
   mensaje += `📦 *ID de pedido:* ${idPedido}\n`;
   mensaje += `📅 *Fecha:* ${fecha}\n\n`;
 
-  mensaje += "👤 *Cliente:*\n";
-  mensaje += `${nombreCliente}\n\n`;
+  mensaje += `👤 *Cliente:*\n${nombreCliente}\n\n`;
 
-  mensaje += "🛒 *Productos solicitados:*\n";
-
+  mensaje += "🛒 *Productos:*\n";
   carrito.forEach(item => {
     mensaje += `• ${item.nombre} - $${item.precio}\n`;
   });
 
-  let subtotal = carrito.reduce((acc, item) => acc + item.precio, 0);
-
-  let descuento = 0;
-  if (carrito.length >= 6) descuento = 0.10;
-  else if (carrito.length >= 3) descuento = 0.05;
+  let subtotal = carrito.reduce((a, b) => a + b.precio, 0);
+  let descuento = carrito.length >= 6 ? 0.10 : carrito.length >= 3 ? 0.05 : 0;
 
   let descuentoMonto = subtotal * descuento;
   let totalFinal = subtotal - descuentoMonto;
 
-  mensaje += `\n💰 *Resumen de pago:*`;
-  mensaje += `\nSubtotal: $${subtotal.toFixed(2)}`;
-  mensaje += `\nDescuento aplicado: -$${descuentoMonto.toFixed(2)}`;
-  mensaje += `\nTotal a pagar: *$${totalFinal.toFixed(2)}*`;
+  mensaje += `\n💰 Subtotal: $${subtotal.toFixed(2)}`;
+  mensaje += `\nDescuento: -$${descuentoMonto.toFixed(2)}`;
+  mensaje += `\nTotal: *$${totalFinal.toFixed(2)}*`;
 
-  // 🔥 MOSTRAR MÉTODO REAL
-  mensaje += `\n\n💳 *Método de pago:* ${metodoPago}`;
+  mensaje += `\n\n💳 Método de pago: ${metodoPago}`;
 
-  mensaje += `\n\n📌 *Solicitud:*`;
-  mensaje += `\n¿Me confirmas disponibilidad y datos para realizar el pago?`;
+  mensaje += `\n\n📌 ¿Me confirmas disponibilidad?`;
 
-  mensaje += `\n\n🌐 Confirmación de pedido:\nhttps://www.littlefinstream.com/gracias.html`;
+  mensaje += `\n\n🌐 https://www.littlefinstream.com/gracias.html`;
 
-  mensaje += `\n\n🔒 Pedido generado automáticamente desde la web`;
-  mensaje += `\nGracias 🙌`;
+  mensaje += `\n\n🙏 Gracias por tu pedido`;
 
-  mostrarToast("Redirigiendo a WhatsApp...");
+  mostrarToast("Redirigiendo...");
 
   vaciarCarrito();
 
@@ -194,7 +183,6 @@ function mostrarToast(texto) {
   toast.style.color = "white";
   toast.style.padding = "10px 20px";
   toast.style.borderRadius = "10px";
-  toast.style.boxShadow = "0 5px 15px rgba(0,0,0,0.2)";
   toast.style.zIndex = "999";
 
   document.body.appendChild(toast);
