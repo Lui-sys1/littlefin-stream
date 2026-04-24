@@ -160,11 +160,20 @@ function pagar() {
   mensaje += `\nTotal: *$${totalFinal.toFixed(2)}*`;
 
   mensaje += `\n\n💳 Método de pago: ${metodoPago}`;
+
+  // 🔥 NUEVO: DATOS AUTOMÁTICOS
+  if (metodoPago === "Transferencia") {
+    mensaje += `\n\n🏦 *Datos para transferencia:*`;
+    mensaje += `\nBanco: INVEX`;
+    mensaje += `\nCLABE: 059180131309685966`;
+    mensaje += `\n\n📸 *Envía tu comprobante por este medio*`;
+  }
+
   mensaje += `\n\n📌 ¿Me confirmas disponibilidad?`;
   mensaje += `\n\n🌐 https://www.littlefinstream.com/gracias.html`;
   mensaje += `\n\n🙏 Gracias por tu pedido`;
 
-  // 🔥 OVERLAY CON ID (FIX BUG)
+  // 🔥 OVERLAY
   const overlay = document.createElement("div");
   overlay.id = "overlay-proceso";
 
@@ -188,7 +197,6 @@ function pagar() {
 
   document.body.appendChild(overlay);
 
-  // loader
   const style = document.createElement("style");
   style.innerHTML = `
     .loader {
