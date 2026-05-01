@@ -3,61 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carrito - Littlefin</title>
+<title>Carrito - Littlefin Stream</title>
 <link rel="stylesheet" href="styles.css">
-
-<style>
-/* 🔥 MÉTODO DE PAGO */
-.metodo-pago {
-  margin-top: 20px;
-  padding: 15px;
-  background: #020617;
-  border-radius: 12px;
-  text-align: center;
-}
-
-.metodo-pago p {
-  margin-bottom: 10px;
-  color: #94a3b8;
-}
-
-.metodo-pago .opciones {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.metodo-pago button {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: #1f2937;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.metodo-pago button:hover {
-  transform: scale(1.05);
-}
-
-.metodo-pago button.activo {
-  background: #22c55e;
-}
-
-/* Animación suave */
-.metodo-pago button:active {
-  transform: scale(0.95);
-}
-</style>
-
 </head>
 
 <body>
 
 <header class="header">
-  <h1>Tu carrito</h1>
+  <div class="logo-container">
+    <img src="logo.png" class="logo-principal" alt="Littlefin Stream logo">
+    <h1>Tu Carrito</h1>
+  </div>
   <a href="index.html" class="cart-icon">← Volver</a>
 </header>
 
@@ -65,7 +21,7 @@
 
 <div class="carrito-page">
 
-  <h2>Resumen de compra</h2>
+  <h2>Resumen de tu compra</h2>
 
   <div id="lista-carrito"></div>
 
@@ -75,7 +31,7 @@
     <h3>Total <span id="total">$0</span></h3>
   </div>
 
-  <!-- 🔥 NUEVO: MÉTODO DE PAGO -->
+  <!-- MÉTODO DE PAGO -->
   <div class="metodo-pago">
     <p>Selecciona tu método de pago</p>
 
@@ -100,7 +56,7 @@
 <script src="script.js"></script>
 
 <script>
-// 🔥 MARCAR MÉTODO GUARDADO AL ENTRAR
+// Marcar método de pago guardado
 const metodoGuardado = localStorage.getItem("metodoPago");
 
 if (metodoGuardado) {
