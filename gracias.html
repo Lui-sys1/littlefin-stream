@@ -3,101 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gracias por tu compra</title>
+<title>¡Gracias por tu compra! - Littlefin Stream</title>
 
 <style>
-body {
+* {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #020617, #0f172a);
-  color: white;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #f0f9ff 50%, #ecfdf5 100%);
+  color: #1e293b;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 /* CONTENEDOR */
 .container {
   text-align: center;
-  padding: 40px 30px;
-  background: rgba(255,255,255,0.03);
+  padding: 50px 40px;
+  background: white;
   border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+  max-width: 500px;
+  animation: slideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* CHECK */
 .check {
-  font-size: 70px;
+  font-size: 80px;
   color: #22c55e;
-  animation: pop 0.6s ease;
+  animation: pop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-bottom: 20px;
 }
 
 @keyframes pop {
-  0% { transform: scale(0); }
-  100% { transform: scale(1); }
+  0% { 
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  100% { 
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
 }
 
 /* TITULO */
 h1 {
-  margin-top: 20px;
-  font-size: 26px;
+  margin-bottom: 12px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* SUBTÍTULO */
+h2 {
+  color: #22c55e;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
 }
 
 /* TEXTO */
 p {
-  color: #94a3b8;
-  margin-top: 10px;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 12px;
 }
 
-/* ID PEDIDO */
-.pedido {
-  margin-top: 15px;
-  font-size: 14px;
-  color: #22c55e;
-  font-weight: bold;
-}
-
-/* BOTÓN */
-.btn {
-  margin-top: 25px;
-  display: inline-block;
-  padding: 14px 30px;
-  background: #22c55e;
-  color: white;
-  text-decoration: none;
+.detalles {
+  background: #f8fafc;
+  padding: 20px;
   border-radius: 12px;
-  font-weight: bold;
-  transition: 0.3s;
+  margin: 20px 0;
+  border-left: 4px solid #22c55e;
+  text-align: left;
 }
 
-.btn:hover {
-  background: #16a34a;
-  transform: scale(1.05);
+.detalles p {
+  margin: 8px 0;
+  font-size: 14px;
 }
 
-/* SPINNER */
-.loader {
-  margin-top: 20px;
-  border: 4px solid #1f2937;
-  border-top: 4px solid #22c55e;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
+.detalles strong {
+  color: #1e293b;
+  font-weight: 600;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* BOTONES */
+.buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* CONTADOR */
-.contador {
-  margin-top: 10px;
-  font-size: 13px;
-  color: #94a3b8;
+a {
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-block;
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  color: white;
+  box-shadow: 0 8px 20px rgba(34,197,94,0.3);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(34,197,94,0.4);
+}
+
+.btn-inicio {
+  background: #f1f5f9;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-inicio:hover {
+  background: #e2e8f0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .container {
+    padding: 40px 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .check {
+    font-size: 60px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  a {
+    width: 100%;
+  }
 }
 </style>
 
@@ -107,15 +179,33 @@ p {
 
 <div class="container">
   <div class="check">✅</div>
+  
+  <h1>¡Gracias por tu compra!</h1>
+  <h2>Littlefin Stream</h2>
+  
+  <p>Tu pedido ha sido recibido correctamente.</p>
+  <p>Nos pondremos en contacto contigo por WhatsApp para confirmar disponibilidad y procesar tu pago.</p>
 
-  <h1>¡Pedido enviado!</h1>
+  <div class="detalles">
+    <p><strong>⏱️ Tiempo de espera:</strong> Pronto recibirás tu acceso</p>
+    <p><strong>📱 WhatsApp:</strong> +52 1 220 146 7666</p>
+    <p><strong>💬 Soporte:</strong> Disponible 24/7</p>
+  </div>
 
-  <p>Serás atendido por WhatsApp en unos momentos.</p>
+  <p>ID de tu pedido guardado en tu navegador</p>
 
-  <!-- ID dinámico -->
-  <div class="pedido">ID de pedido: <span id="pedidoID">---</span></div>
+  <div class="buttons">
+    <a href="https://wa.me/5212201467666?text=Hola,%20quiero%20consultar%20mi%20pedido" class="btn-whatsapp">
+      💬 Contactar por WhatsApp
+    </a>
+    <a href="index.html" class="btn-inicio">
+      ← Volver al inicio
+    </a>
+  </div>
+</div>
 
-  <div class="loader"></div>
+</body>
+</html>
 
   <div class="contador">
     Regresando automáticamente en <span id="segundos">5</span>...
