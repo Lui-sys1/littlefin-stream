@@ -89,15 +89,15 @@
       <button onclick="agregarCarrito('Fox One', 65)">Agregar al carrito</button>
     </div>
 
-      <div class="card">
-      <img src="max.jpeg" class="logo" loading="lazy" alt="YouTube Premium">
+    <div class="card">
+      <img src="max.jpeg" class="logo" loading="lazy" alt="HBO Max">
       <h3>HBO Estándar</h3>
       <p class="price">$45</p>
       <button onclick="agregarCarrito('HBO Estandar', 45)">Agregar al carrito</button>
-      </div>
+    </div>
 
     <div class="card">
-      <img src="max.jpeg" class="logo" loading="lazy" alt="YouTube Premium">
+      <img src="max.jpeg" class="logo" loading="lazy" alt="HBO Max Premium">
       <h3>HBO Premium</h3>
       <p class="price">$65</p>
       <button onclick="agregarCarrito('HBO Premium', 65)">Agregar al carrito</button>
@@ -146,6 +146,13 @@
     </div>
 
     <div class="card">
+      <img src="paramount.jpeg" class="logo" loading="lazy" alt="Paramount+">
+      <h3>Paramount+</h3>
+      <p class="price">$40</p>
+      <button onclick="agregarCarrito('Paramount+', 40)">Agregar al carrito</button>
+    </div>
+
+    <div class="card">
       <img src="canva.jpeg" class="logo" loading="lazy" alt="Canva Pro">
       <h3>Canva Pro</h3>
       <p class="price">$55</p>
@@ -162,8 +169,11 @@
 
     <!-- COMBO TOP -->
     <div class="card combo destacado">
-      <span class="badge">🔥 Más vendido</span>
-      <img src="Netflix.png" class="logo">
+      <div class="logos-container">
+        <img src="Netflix.png" class="logo-mini" alt="Netflix">
+        <img src="disney.jpg" class="logo-mini" alt="Disney+">
+        <img src="prime.jpeg" class="logo-mini" alt="Prime Video">
+      </div>
       <h3>Combo Streaming PRO</h3>
       <p>Netflix + Disney + Prime</p>
 
@@ -178,7 +188,11 @@
 
     <!-- ENTRETENIMIENTO -->
     <div class="card combo">
-      <img src="youTube.png" class="logo">
+      <div class="logos-container">
+        <img src="youTube.png" class="logo-mini" alt="YouTube">
+        <img src="max.jpeg" class="logo-mini" alt="HBO">
+        <img src="viki.png" class="logo-mini" alt="Viki">
+      </div>
       <h3>Combo Entretenimiento</h3>
       <p>YouTube + HBO + Viki</p>
 
@@ -191,9 +205,104 @@
       </button>
     </div>
 
+
+    <!-- COMBO Sport -->
+    <div class="card combo Sport">
+      <div class="logos-container">
+        <img src="fox.png" class="logo-mini" alt="Fox One">
+        <img src="pase.jpg" class="logo-mini" alt="Vix Mundial">
+      </div>
+      <h3>Combo Sport</h3>
+      <p>Fox One + Vix Pase Mundial</p>
+
+      <p class="old-price">$265</p>
+      <p class="price">$240</p>
+      <p class="ahorro">Ahorras $25</p>
+
+      <button onclick="agregarCarrito('Combo Sport',240)">
+        Comprar combo
+      </button>
+    </div>
+
+    <!-- COMBO Arcoiris -->
+    <div class="card combo Arcoiris">
+      <div class="logos-container">
+        <img src="Netflix.png" class="logo-mini" alt="Netflix">
+        <img src="prime.jpeg" class="logo-mini" alt="Prime Video">
+      </div>
+      <h3>Combo Arcoiris</h3>
+      <p>Netflix + Prime Video</p>
+
+      <p class="old-price">$150</p>
+      <p class="price">$110</p>
+      <p class="ahorro">Ahorras $40</p>
+
+      <button onclick="agregarCarrito('Combo Arcoiris',110)">
+        Comprar combo
+      </button>
+    </div>
+
+    <!-- COMBO Chico -->
+    <div class="card combo Chico">
+      <div class="logos-container">
+        <img src="disney.jpg" class="logo-mini" alt="Disney+">
+        <img src="max.jpeg" class="logo-mini" alt="HBO Max">
+      </div>
+      <h3>Combo Chico</h3>
+      <p>Disney+ + HBO Max Premium</p>
+
+      <p class="old-price">$135</p>
+      <p class="price">$110</p>
+      <p class="ahorro">Ahorras $25</p>
+
+      <button onclick="agregarCarrito('Combo Chico',110)">
+        Comprar combo
+      </button>
+    </div>
+
+    <!-- COMBO Niño -->
+    <div class="card combo Niño">
+      <div class="logos-container">
+        <img src="disney.jpg" class="logo-mini" alt="Disney+">
+        <img src="vix.jpg" class="logo-mini" alt="VIX">
+        <img src="paramount.jpeg" class="logo-mini" alt="Paramount+">
+      </div>
+      <h3>Combo Niño</h3>
+      <p>Disney+ + VIX 1 mes + Paramount+</p>
+
+      <p class="old-price">$155</p>
+      <p class="price">$125</p>
+      <p class="ahorro">Ahorras $30</p>
+
+      <button onclick="agregarCarrito('Combo Niño',125)">
+        Comprar combo
+      </button>
+    </div>
+
+    <!-- COMBO Campana -->
+    <div class="card combo Campana">
+      <div class="logos-container">
+        <img src="disney.jpg" class="logo-mini" alt="Disney+">
+        <img src="Netflix.png" class="logo-mini" alt="Netflix">
+      </div>
+      <h3>Combo Campana</h3>
+      <p>Disney+ + Netflix</p>
+
+      <p class="old-price">$180</p>
+      <p class="price">$165</p>
+      <p class="ahorro">Ahorras $15</p>
+
+      <button onclick="agregarCarrito('Combo Campana',165)">
+        Comprar combo
+      </button>
+    </div>
+
     <!-- BÁSICO -->
     <div class="card combo">
-      <img src="vix.jpg" class="logo">
+      <div class="logos-container">
+        <img src="vix.jpg" class="logo-mini" alt="VIX">
+        <img src="crunchyroll.jpeg" class="logo-mini" alt="Crunchyroll">
+      </div>
       <h3>Combo Básico</h3>
       <p>VIX + Crunchyroll</p>
 
