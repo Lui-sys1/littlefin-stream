@@ -18,6 +18,20 @@ function actualizarContador() {
   const contador = document.getElementById("contador");
   if (contador) {
     contador.textContent = carrito.length;
+    // Animación de pulso
+    contador.style.animation = "pulse 0.6s ease-out";
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.3); }
+        100% { transform: scale(1); }
+      }
+    `;
+    if (!document.head.querySelector('style[data-pulse="true"]')) {
+      style.setAttribute('data-pulse', 'true');
+      document.head.appendChild(style);
+    }
   }
 }
 
@@ -254,17 +268,47 @@ function mostrarToast(texto) {
 
   toast.style.position = "fixed";
   toast.style.bottom = "20px";
-  toast.style.left = "50%";
-  toast.style.transform = "translateX(-50%)";
-  toast.style.background = "#22c55e";
+  toast.style.right = "20px";
+  toast.style.background = "linear-gradient(135deg, #22c55e, #4ade80)";
   toast.style.color = "white";
-  toast.style.padding = "10px 20px";
+  toast.style.padding = "12px 20px";
   toast.style.borderRadius = "10px";
   toast.style.zIndex = "999";
+  toast.style.fontWeight = "600";
+  toast.style.boxShadow = "0 8px 20px rgba(34,197,94,0.35)";
+  toast.style.animation = "slideIn 0.3s ease-out";
+
+  const style = document.createElement("style");
+  style.innerHTML = `
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    @keyframes slideOut {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+    }
+  `;
+  document.head.appendChild(style);
 
   document.body.appendChild(toast);
 
-  setTimeout(() => toast.remove(), 2000);
+  setTimeout(() => {
+    toast.style.animation = "slideOut 0.3s ease-out";
+    setTimeout(() => toast.remove(), 300);
+  }, 2000);
 }
 
 /* ================= INIT ================= */
