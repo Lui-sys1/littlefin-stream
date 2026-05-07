@@ -10,11 +10,16 @@
 <body>
 
 <header class="header">
+
   <div class="logo-container">
     <img src="logo.png" class="logo-principal" alt="Littlefin Stream logo">
     <h1>Tu Carrito</h1>
   </div>
-  <a href="index.html" class="cart-icon">← Volver</a>
+
+  <a href="index.html" class="cart-icon">
+    ← Volver
+  </a>
+
 </header>
 
 <main>
@@ -23,33 +28,95 @@
 
   <h2>Resumen de tu compra</h2>
 
+  <!-- PRODUCTOS -->
   <div id="lista-carrito"></div>
 
+  <!-- RESUMEN -->
   <div class="resumen">
-    <p>Subtotal <span id="subtotal">$0</span></p>
-    <p>Descuento <span id="descuento">$0</span></p>
-    <h3>Total <span id="total">$0</span></h3>
+    <p>
+      Subtotal
+      <span id="subtotal">$0</span>
+    </p>
+
+    <p>
+      Descuento
+      <span id="descuento">$0</span>
+    </p>
+
+    <h3>
+      Total
+      <span id="total">$0</span>
+    </h3>
   </div>
 
   <!-- MÉTODO DE PAGO -->
-  <div class="opciones">
+  <div class="metodo-pago">
 
-  <button onclick="seleccionarPago('Transferencia')" id="btn-transferencia">
-    💸 Transferencia
+    <p class="titulo-pago">
+      Selecciona tu método de pago
+    </p>
+
+    <div class="opciones">
+
+      <!-- TRANSFERENCIA -->
+      <button
+        onclick="seleccionarPago('Transferencia')"
+        id="btn-transferencia"
+        class="opcion-pago"
+      >
+        <span class="radio"></span>
+
+        <div class="info-pago">
+          <strong>Transferencia bancaria</strong>
+          <small>Pago directo a cuenta bancaria</small>
+        </div>
+      </button>
+
+      <!-- LINK -->
+      <button
+        onclick="seleccionarPago('Link de pago')"
+        id="btn-link"
+        class="opcion-pago"
+      >
+        <span class="radio"></span>
+
+        <div class="info-pago">
+          <strong>Link de pago</strong>
+          <small>Paga con tarjeta o transferencia</small>
+        </div>
+      </button>
+
+      <!-- EFECTIVO -->
+      <button
+        onclick="seleccionarPago('Efectivo')"
+        id="btn-efectivo"
+        class="opcion-pago"
+      >
+        <span class="radio"></span>
+
+        <div class="info-pago">
+          <strong>Efectivo</strong>
+          <small>Pago en efectivo acordado</small>
+        </div>
+      </button>
+
+    </div>
+
+    <!-- MÉTODO SELECCIONADO -->
+    <div id="metodo-seleccionado">
+      Ningún método seleccionado
+    </div>
+
+  </div>
+
+  <!-- BOTONES -->
+  <button onclick="pagar()" class="btn-pagar">
+    Finalizar compra
   </button>
 
-  <button onclick="seleccionarPago('Link de pago')" id="btn-link">
-    🔗 Link de pago
+  <button onclick="vaciarCarrito()" class="btn-vaciar">
+    Vaciar carrito
   </button>
-
-  <button onclick="seleccionarPago('Efectivo')" id="btn-efectivo">
-    💵 Efectivo
-  </button>
-
-</div>
-
-  <button onclick="pagar()" class="btn-pagar">Finalizar compra</button>
-  <button onclick="vaciarCarrito()" class="btn-vaciar">Vaciar carrito</button>
 
 </div>
 
@@ -58,16 +125,27 @@
 <script src="script.js"></script>
 
 <script>
-// Marcar método de pago guardado
+
+/* ================= RESTAURAR MÉTODO ================= */
+
 const metodoGuardado = localStorage.getItem("metodoPago");
 
 if (metodoGuardado) {
+
   if (metodoGuardado === "Transferencia") {
     document.getElementById("btn-transferencia")?.classList.add("activo");
-  } else {
+
+  } else if (metodoGuardado === "Link de pago") {
     document.getElementById("btn-link")?.classList.add("activo");
+
+  } else if (metodoGuardado === "Efectivo") {
+    document.getElementById("btn-efectivo")?.classList.add("activo");
   }
+
+  document.getElementById("metodo-seleccionado").textContent =
+    `Método seleccionado: ${metodoGuardado}`;
 }
+
 </script>
 
 </body>
