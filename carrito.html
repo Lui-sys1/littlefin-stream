@@ -32,19 +32,21 @@
   </div>
 
   <!-- MÉTODO DE PAGO -->
-  <div class="metodo-pago">
-    <p>Selecciona tu método de pago</p>
+  <div class="opciones">
 
-    <div class="opciones">
-      <button onclick="seleccionarPago('Transferencia')" id="btn-transferencia">
-        💸 Transferencia
-      </button>
+  <button onclick="seleccionarPago('Transferencia')" id="btn-transferencia">
+    💸 Transferencia
+  </button>
 
-      <button onclick="seleccionarPago('Link de pago')" id="btn-link">
-        🔗 Link de pago
-      </button>
-    </div>
-  </div>
+  <button onclick="seleccionarPago('Link de pago')" id="btn-link">
+    🔗 Link de pago
+  </button>
+
+  <button onclick="seleccionarPago('Efectivo')" id="btn-efectivo">
+    💵 Efectivo
+  </button>
+
+</div>
 
   <button onclick="pagar()" class="btn-pagar">Finalizar compra</button>
   <button onclick="vaciarCarrito()" class="btn-vaciar">Vaciar carrito</button>
