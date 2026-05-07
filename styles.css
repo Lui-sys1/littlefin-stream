@@ -326,59 +326,87 @@ footer p {
 }
 
 /* ================= MÉTODO DE PAGO ================= */
-/* ================= MÉTODO DE PAGO ================= */
+
+
 .metodo-pago {
-  margin-top: 20px;
-  padding: 15px;
-  background: #020617;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+  margin-top: 25px;
+  padding: 20px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid #e2e8f0;
 }
 
 .metodo-pago p {
-  margin-bottom: 10px;
-  color: #94a3b8;
-  font-weight: 500;
+  margin-bottom: 15px;
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: left;
 }
 
 /* OPCIONES */
 .metodo-pago .opciones {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 12px;
 }
 
 /* BOTONES */
 .metodo-pago button {
-  flex: 1;
-  background: #1f2937;
-  border-radius: 10px;
-  padding: 12px;
-  border: 2px solid transparent;
-  color: white;
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px;
+  color: #0f172a;
   font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
   transition: all 0.25s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+/* ICONOS */
+.metodo-pago button span {
+  font-size: 18px;
 }
 
 /* HOVER */
 .metodo-pago button:hover {
-  transform: translateY(-2px);
   border-color: #22c55e;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(34,197,94,0.12);
 }
 
 /* ACTIVO */
 .metodo-pago button.activo {
-  background: linear-gradient(135deg, #22c55e, #4ade80);
-  border-color: #bbf7d0;
-  transform: scale(1.05);
-  box-shadow: 0 5px 18px rgba(34,197,94,0.45);
+  border-color: #22c55e;
+  background: rgba(34,197,94,0.06);
+  box-shadow: 0 0 0 4px rgba(34,197,94,0.15);
+}
+
+/* CHECK */
+.metodo-pago button.activo::after {
+  content: "✔";
+  color: #16a34a;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 /* BOTÓN PAGAR */
 .btn-pagar {
   width: 100%;
-  margin-top: 15px;
+  margin-top: 18px;
   font-size: 16px;
+  font-weight: 700;
+  border-radius: 14px;
+  padding: 14px;
 }
 
 /* BOTÓN VACIAR */
@@ -386,12 +414,18 @@ footer p {
   width: 100%;
   margin-top: 10px;
   background: #ef4444;
+  border-radius: 14px;
 }
 
 /* RESPONSIVE */
 @media (max-width: 480px) {
-  .metodo-pago .opciones {
-    flex-direction: column;
+  .metodo-pago {
+    padding: 15px;
+  }
+
+  .metodo-pago button {
+    font-size: 14px;
+    padding: 14px;
   }
 }
 
