@@ -327,22 +327,20 @@ footer p {
 
 /* ================= MÉTODO DE PAGO ================= */
 
-
 .metodo-pago {
   margin-top: 25px;
   padding: 20px;
   background: white;
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
 }
 
 .metodo-pago p {
   margin-bottom: 15px;
-  color: #0f172a;
-  font-size: 15px;
+  color: #111827;
+  font-size: 16px;
   font-weight: 700;
-  text-align: left;
 }
 
 /* OPCIONES */
@@ -355,66 +353,61 @@ footer p {
 /* BOTONES */
 .metodo-pago button {
   width: 100%;
-  background: #ffffff;
-  border: 2px solid #e2e8f0;
+  background: white;
+  border: 2px solid #d1d5db;
   border-radius: 14px;
-  padding: 16px;
-  color: #0f172a;
-  font-weight: 600;
-  font-size: 15px;
+  padding: 15px;
   cursor: pointer;
   transition: all 0.25s ease;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
 
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  color: #111827;
+  font-size: 15px;
+  font-weight: 600;
+
+  position: relative;
 }
 
-/* ICONOS */
-.metodo-pago button span {
-  font-size: 18px;
+/* CÍRCULO */
+.metodo-pago button::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 2px solid #9ca3af;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+  background: white;
+  flex-shrink: 0;
 }
 
 /* HOVER */
 .metodo-pago button:hover {
-  border-color: #22c55e;
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(34,197,94,0.12);
+  border-color: #2563eb;
+  background: #f8fafc;
 }
 
 /* ACTIVO */
 .metodo-pago button.activo {
-  border-color: #22c55e;
-  background: rgba(34,197,94,0.06);
-  box-shadow: 0 0 0 4px rgba(34,197,94,0.15);
+  border-color: #2563eb;
+  background: #eff6ff;
 }
 
-/* CHECK */
-.metodo-pago button.activo::after {
-  content: "✔";
-  color: #16a34a;
-  font-weight: bold;
-  font-size: 18px;
+/* CÍRCULO AZUL */
+.metodo-pago button.activo::before {
+  background: #2563eb;
+  border-color: #2563eb;
+  box-shadow: inset 0 0 0 4px white;
 }
 
-/* BOTÓN PAGAR */
-.btn-pagar {
-  width: 100%;
-  margin-top: 18px;
-  font-size: 16px;
-  font-weight: 700;
-  border-radius: 14px;
-  padding: 14px;
-}
-
-/* BOTÓN VACIAR */
-.btn-vaciar {
-  width: 100%;
-  margin-top: 10px;
-  background: #ef4444;
-  border-radius: 14px;
+/* TEXTO MÉTODO SELECCIONADO */
+#metodo-seleccionado {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #2563eb;
+  font-weight: 600;
 }
 
 /* RESPONSIVE */
@@ -424,8 +417,8 @@ footer p {
   }
 
   .metodo-pago button {
-    font-size: 14px;
     padding: 14px;
+    font-size: 14px;
   }
 }
 
