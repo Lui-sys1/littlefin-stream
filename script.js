@@ -39,13 +39,20 @@ function actualizarContador() {
 function seleccionarPago(metodo) {
   localStorage.setItem("metodoPago", metodo);
 
+  // Quitar activos
   document.getElementById("btn-transferencia")?.classList.remove("activo");
   document.getElementById("btn-link")?.classList.remove("activo");
+  document.getElementById("btn-efectivo")?.classList.remove("activo");
 
+  // Activar seleccionado
   if (metodo === "Transferencia") {
     document.getElementById("btn-transferencia")?.classList.add("activo");
-  } else {
+
+  } else if (metodo === "Link de pago") {
     document.getElementById("btn-link")?.classList.add("activo");
+
+  } else if (metodo === "Efectivo") {
+    document.getElementById("btn-efectivo")?.classList.add("activo");
   }
 }
 
