@@ -338,30 +338,48 @@ footer p {
 /* CART */
 .cart-icon {
   position: relative;
-  background: transparent;
-  box-shadow: none;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.cart-icon:hover {
+  transform: scale(1.05);
 }
 
 .cart-emoji {
-  font-size: 28px;
+  font-size: 30px;
+  line-height: 1;
 }
 
 .cart-count {
   position: absolute;
-  top: -6px;
-  right: -10px;
+  top: -2px;
+  right: -2px;
+
   background: #ef4444;
   color: white;
+
   min-width: 20px;
   height: 20px;
+
   border-radius: 50%;
+
   font-size: 11px;
+  font-weight: bold;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+
   animation: pulseCart 1.5s infinite;
+
+  border: 2px solid #131921;
 }
 
 @keyframes pulseCart {
