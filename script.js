@@ -15,7 +15,7 @@ function agregarCarrito(nombre, precio) {
 
 /* ================= CONTADOR ================= */
 function actualizarContador() {
-  const contador = document.getElementById("contador");
+  const contador = document.getElementById("contador") || document.getElementById("cart-count");
   if (contador) {
     contador.textContent = carrito.length;
     // Animación de pulso
@@ -95,6 +95,13 @@ function mostrarCarrito() {
   if (subtotalTexto) subtotalTexto.textContent = `$${subtotal.toFixed(2)}`;
   if (descuentoTexto) descuentoTexto.textContent = `-$${descuentoMonto.toFixed(2)}`;
   if (totalTexto) totalTexto.textContent = `$${totalFinal.toFixed(2)}`;
+
+  const btnPagar = document.querySelector(".btn-pagar");
+
+  if (btnPagar) {
+    btnPagar.textContent =
+      `Finalizar compra • $${totalFinal.toFixed(2)}`;
+  }
 }
 
 /* ================= ELIMINAR ================= */
@@ -258,6 +265,36 @@ window.addEventListener("pageshow", () => {
   pagando = false;
   mostrarCarrito();
 });
+
+/* ================= BUSCADOR ================= */
+
+const buscador = document.getElementById("buscador");
+
+if (buscador) {
+
+  buscador.addEventListener("keyup", () => {
+
+    const texto = buscador.value.toLowerCase();
+
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+      const contenido =
+        card.textContent.toLowerCase();
+
+      if (contenido.includes(texto)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+
+    });
+
+  });
+
+}
+
 
 /* ================= EXTRA PRO ================= */
 document.addEventListener("visibilitychange", () => {
