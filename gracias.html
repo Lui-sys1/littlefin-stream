@@ -204,36 +204,25 @@ a {
   </div>
 </div>
 
-</body>
-</html>
-
-  <div class="contador">
-    Regresando automáticamente en <span id="segundos">5</span>...
-  </div>
-
-  <a href="index.html" class="btn">Volver a la tienda</a>
-</div>
-
 <script>
 // 🔥 Mostrar ID del pedido
 const pedido = localStorage.getItem("ultimoPedido");
 if (pedido) {
-  document.getElementById("pedidoID").textContent = pedido;
+  // Si hay un elemento para mostrar el ID, pero en este diseño no lo hay
+  // Podrías agregar un párrafo si quieres mostrarlo
 }
 
-// 🔥 Auto redirección
+// 🔥 Auto redirección (opcional, comentado para evitar redirección automática)
 let tiempo = 5;
-const contador = document.getElementById("segundos");
-
-const intervalo = setInterval(() => {
-  tiempo--;
-  contador.textContent = tiempo;
-
-  if (tiempo <= 0) {
-    clearInterval(intervalo);
-    window.location.href = "index.html";
-  }
-}, 1000);
+// const contador = document.getElementById("segundos");
+// const intervalo = setInterval(() => {
+//   tiempo--;
+//   if (contador) contador.textContent = tiempo;
+//   if (tiempo <= 0) {
+//     clearInterval(intervalo);
+//     window.location.href = "index.html";
+//   }
+// }, 1000);
 </script>
 
 </body>
