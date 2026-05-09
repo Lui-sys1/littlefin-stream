@@ -774,3 +774,92 @@ footer p {
     flex-direction: column;
   }
 }
+
+/* ========================================= */
+/* MOBILE HEADER FIX */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+  /* HEADER */
+  .header-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  /* LOGO */
+  .logo-container {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .logo-principal {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-text h1 {
+    font-size: 18px;
+  }
+
+  .logo-text p {
+    font-size: 12px;
+  }
+
+  /* BUSCADOR */
+  .search-container {
+    width: 100%;
+    height: 50px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .search-container input {
+    height: 100%;
+    font-size: 15px;
+    padding: 0 15px;
+  }
+
+  .search-btn {
+    width: 60px;
+    height: 100%;
+    font-size: 20px;
+  }
+
+  /* CARRITO */
+  .cart-icon {
+    position: absolute;
+    top: 18px;
+    right: 15px;
+  }
+
+  .cart-emoji {
+    font-size: 30px;
+  }
+
+  .cart-count {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+  }
+
+  /* NAV */
+  .header-nav {
+    padding: 12px;
+    gap: 15px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .header-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-nav a {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+}
