@@ -73,13 +73,32 @@ function mostrarCarrito() {
     const div = document.createElement("div");
     div.classList.add("item-carrito");
 
-    div.innerHTML = `
-      <div class="item-info">
-        ${item.nombre}<br>
-        <strong>$${item.precio}</strong>
-      </div>
-      <button onclick="eliminarProducto(${index})">X</button>
-    `;
+div.innerHTML = `
+  <div class="item-left">
+
+    <div class="item-logo">
+      🎬
+    </div>
+
+    <div class="item-info">
+      <span class="item-categoria">
+        Streaming Premium
+      </span>
+
+      <h4>${item.nombre}</h4>
+
+      <strong>$${item.precio}</strong>
+    </div>
+
+  </div>
+
+  <button
+    onclick="eliminarProducto(${index})"
+    class="btn-eliminar"
+  >
+    🗑️
+  </button>
+`;
 
     lista.appendChild(div);
     subtotal += item.precio;
