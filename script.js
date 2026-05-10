@@ -114,6 +114,13 @@ div.innerHTML = `
   if (subtotalTexto) subtotalTexto.textContent = `$${subtotal.toFixed(2)}`;
   if (descuentoTexto) descuentoTexto.textContent = `-$${descuentoMonto.toFixed(2)}`;
   if (totalTexto) totalTexto.textContent = `$${totalFinal.toFixed(2)}`;
+  const cantidadProductos =
+  document.getElementById("cantidad-productos");
+
+if (cantidadProductos) {
+  cantidadProductos.textContent =
+    `${carrito.length} productos`;
+}
 
   const btnPagar = document.querySelector(".btn-pagar");
 
