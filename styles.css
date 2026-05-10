@@ -184,6 +184,19 @@ main {
   margin-bottom: 24px;
 }
 
+@media (max-width: 768px) {
+
+  .hero {
+    padding: 20px 16px;
+    border-radius: 0 0 24px 24px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+}
+
 /* ================= HERO BUTTONS ================= */
 
 .hero-buttons {
