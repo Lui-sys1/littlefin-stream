@@ -1155,6 +1155,203 @@ footer p {
   color: #2563eb;
 
   font-weight: 600;
+
+}
+
+
+/* ================= PREMIUM CARRITO ================= */
+
+.carrito-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.volver-btn {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.08);
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 22px;
+  font-weight: bold;
+
+  transition: 0.25s ease;
+}
+
+.volver-btn:hover {
+  background: rgba(255,255,255,0.14);
+}
+
+.carrito-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.carrito-title h1 {
+  color: white;
+  font-size: 22px;
+  margin: 0;
+}
+
+.carrito-title p {
+  color: #cbd5e1;
+  font-size: 13px;
+}
+
+/* CONTENEDOR */
+
+.carrito-page {
+  margin-top: 20px;
+}
+
+/* ITEMS */
+
+.item-carrito {
+  border-radius: 22px;
+
+  padding: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.95),
+      rgba(248,250,252,0.95)
+    );
+
+  border: 1px solid rgba(226,232,240,0.8);
+
+  backdrop-filter: blur(10px);
+}
+
+/* INFO */
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item-info strong {
+  font-size: 24px;
+}
+
+/* BOTÓN ELIMINAR */
+
+.btn-eliminar {
+  border-radius: 14px;
+
+  min-width: 54px;
+  height: 44px;
+
+  font-size: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+}
+
+/* RESUMEN */
+
+.resumen {
+  border-radius: 24px;
+}
+
+.resumen h3 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+/* MÉTODOS DE PAGO */
+
+.opcion-pago {
+  border-radius: 20px !important;
+
+  padding: 18px !important;
+
+  transition: all 0.25s ease !important;
+}
+
+.opcion-pago:hover {
+  transform: translateY(-2px);
+}
+
+.opcion-pago strong {
+  font-size: 18px;
+}
+
+.opcion-pago small {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* BOTÓN PAGAR */
+
+.btn-pagar {
+  position: sticky;
+  bottom: 10px;
+
+  z-index: 500;
+
+  height: 58px;
+
+  border-radius: 18px;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  margin-top: 20px;
+
+  box-shadow:
+    0 20px 40px rgba(34,197,94,0.35);
+}
+
+/* BOTÓN VACIAR */
+
+.btn-vaciar {
+  margin-top: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ef4444,
+      #dc2626
+    );
+}
+
+.btn-vaciar:hover {
+  box-shadow:
+    0 12px 24px rgba(239,68,68,0.35);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .item-carrito {
+    padding: 16px;
+  }
+
+  .resumen h3 {
+    font-size: 30px;
+  }
+
+  .btn-pagar {
+    font-size: 17px;
+  }
 }
 
 /* ================= COMBOS ================= */
