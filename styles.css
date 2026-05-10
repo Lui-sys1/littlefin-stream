@@ -900,6 +900,10 @@ footer p {
 /* ================= CARRITO ================= */
 
 .carrito-page {
+  position: relative;
+
+  overflow: hidden;
+
   max-width: 1100px;
 
   margin: 24px auto;
@@ -918,6 +922,25 @@ footer p {
 
   border:
     1px solid rgba(255,255,255,0.6);
+}
+
+.carrito-page::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 28px;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(34,197,94,0.08),
+      transparent 30%
+    );
 }
 
 /* ITEMS */
@@ -939,73 +962,153 @@ footer p {
 
   gap: 16px;
 
-  background: white;
-
   padding: 18px;
 
-  border-radius: 18px;
+  border-radius: 22px;
 
-  border: 1px solid #e5e7eb;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.95),
+      rgba(248,250,252,0.95)
+    );
+
+  border: 1px solid rgba(226,232,240,0.8);
 
   transition: all 0.25s ease;
 
   box-shadow:
-    0 5px 15px rgba(0,0,0,0.04);
+    0 8px 25px rgba(0,0,0,0.05);
+
+  backdrop-filter: blur(10px);
 }
 
 .item-carrito:hover {
   transform: translateY(-2px);
 
   box-shadow:
-    0 12px 25px rgba(0,0,0,0.08);
+    0 14px 30px rgba(0,0,0,0.08);
 }
 
-.item-info {
+/* ITEM LEFT */
+
+.item-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
   flex: 1;
+}
 
-  font-size: 15px;
+/* LOGO */
 
-  line-height: 1.5;
+.item-logo {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 18px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #22c55e,
+      #16a34a
+    );
+
+  color: white;
+
+  flex-shrink: 0;
+
+  box-shadow:
+    0 10px 20px rgba(34,197,94,0.25);
+}
+
+/* INFO */
+
+.item-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  flex: 1;
+}
+
+.item-categoria {
+  font-size: 11px;
+
+  color: #64748b;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+.item-info h4 {
+  font-size: 17px;
+
+  color: #111827;
+
+  margin: 0;
+
+  font-weight: 700;
 }
 
 .item-info strong {
-  display: block;
-
-  margin-top: 6px;
-
   color: #16a34a;
 
-  font-size: 20px;
+  font-size: 24px;
 
-  font-weight: 700;
+  font-weight: 800;
 }
 
 /* ELIMINAR */
 
 .btn-eliminar {
-  width: auto;
+  width: 50px;
 
-  background: #fee2e2;
+  min-width: 50px;
 
-  color: #dc2626;
+  height: 50px;
 
-  border: none;
+  border-radius: 16px;
 
-  padding: 10px 14px;
+  padding: 0;
 
-  border-radius: 12px;
+  display: flex;
 
-  font-size: 13px;
+  align-items: center;
+  justify-content: center;
 
-  font-weight: 700;
+  background:
+    linear-gradient(
+      135deg,
+      #ef4444,
+      #dc2626
+    );
 
-  box-shadow: none;
+  color: white;
+
+  font-size: 18px;
+
+  box-shadow:
+    0 10px 20px rgba(239,68,68,0.25);
 }
 
 .btn-eliminar:hover {
-  background: #fecaca;
-
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 /* RESUMEN */
@@ -1017,7 +1120,7 @@ footer p {
 
   padding: 22px;
 
-  border-radius: 20px;
+  border-radius: 24px;
 
   border: 1px solid #e5e7eb;
 
@@ -1041,7 +1144,19 @@ footer p {
 
   border-top: 1px solid #e5e7eb;
 
-  font-size: 24px;
+  font-size: 36px;
+
+  font-weight: 800;
+}
+
+.texto-seguridad {
+  margin-top: 12px;
+
+  font-size: 13px;
+
+  color: #64748b;
+
+  text-align: center;
 }
 
 /* ================= MÉTODO DE PAGO ================= */
@@ -1053,7 +1168,7 @@ footer p {
 
   background: white;
 
-  border-radius: 18px;
+  border-radius: 22px;
 
   box-shadow:
     0 8px 25px rgba(0,0,0,0.08);
@@ -1086,9 +1201,9 @@ footer p {
 
   border: 2px solid #d1d5db;
 
-  border-radius: 14px;
+  border-radius: 20px;
 
-  padding: 15px;
+  padding: 18px;
 
   cursor: pointer;
 
@@ -1130,6 +1245,8 @@ footer p {
   border-color: #2563eb;
 
   background: #f8fafc;
+
+  transform: translateY(-2px);
 }
 
 .metodo-pago button.activo {
@@ -1155,9 +1272,48 @@ footer p {
   color: #2563eb;
 
   font-weight: 600;
-
 }
 
+/* BOTONES */
+
+.btn-pagar {
+  position: sticky;
+
+  bottom: 12px;
+
+  z-index: 500;
+
+  height: 60px;
+
+  border-radius: 18px;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  margin-top: 20px;
+
+  letter-spacing: 0.3px;
+
+  box-shadow:
+    0 20px 40px rgba(34,197,94,0.35);
+}
+
+.btn-vaciar {
+  margin-top: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ef4444,
+      #dc2626
+    );
+}
+
+.btn-vaciar:hover {
+  box-shadow:
+    0 12px 24px rgba(239,68,68,0.35);
+}
 
 /* ================= PREMIUM CARRITO ================= */
 
