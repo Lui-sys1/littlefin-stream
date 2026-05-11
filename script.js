@@ -384,3 +384,10 @@ function mostrarToast(texto) {
 /* ================= INIT ================= */
 actualizarContador();
 mostrarCarrito();
+
+
+/*-------------APK-------------------------*/
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js");
+}
