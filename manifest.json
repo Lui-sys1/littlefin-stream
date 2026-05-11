@@ -1,11 +1,11 @@
 {
   "name": "Littlefin Stream",
   "short_name": "Littlefin",
-  "description": "Streaming premium al mejor precio.",
   "start_url": "/",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#0f172a",
   "theme_color": "#16a34a",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "/icon-192.png",
