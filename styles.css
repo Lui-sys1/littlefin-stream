@@ -1581,3 +1581,153 @@ footer p {
     gap: 10px;
   }
     }
+
+/* ===================================================== */
+/* HEADER CARRITO */
+/* ===================================================== */
+
+.carrito-header {
+  background:
+    linear-gradient(
+      135deg,
+      #0f172a,
+      #111827,
+      #052e2b
+    );
+
+  padding: 18px 18px 24px;
+
+  border-bottom-left-radius: 26px;
+  border-bottom-right-radius: 26px;
+
+  overflow: hidden;
+}
+
+/* TOP */
+.carrito-header .header-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 14px;
+
+  padding: 0;
+
+  flex-wrap: nowrap;
+}
+
+/* BOTÓN VOLVER */
+.volver-btn {
+  width: 46px;
+  height: 46px;
+
+  min-width: 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 22px;
+
+  transition: all .25s ease;
+
+  backdrop-filter: blur(10px);
+}
+
+.volver-btn:hover {
+  background:
+    rgba(255,255,255,0.14);
+
+  transform: translateY(-2px);
+}
+
+/* CONTENIDO */
+.carrito-title {
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+/* LOGO */
+.carrito-title .logo-principal {
+  width: 54px;
+  height: 54px;
+
+  object-fit: contain;
+
+  border-radius: 16px;
+
+  background:
+    rgba(255,255,255,0.06);
+
+  padding: 6px;
+}
+
+/* TITULO */
+.carrito-title h1 {
+  color: white;
+
+  font-size: 34px;
+
+  line-height: 1;
+
+  margin-bottom: 6px;
+
+  font-weight: 800;
+}
+
+/* SUBTEXTO */
+.carrito-title p {
+  color: #cbd5e1;
+
+  font-size: 15px;
+
+  margin: 0;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .carrito-header {
+    padding: 16px 16px 22px;
+  }
+
+  .carrito-title h1 {
+    font-size: 28px;
+  }
+
+  .carrito-title p {
+    font-size: 14px;
+  }
+
+  .carrito-title .logo-principal {
+    width: 48px;
+    height: 48px;
+  }
+
+  .volver-btn {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    font-size: 20px;
+  }
+}
+
