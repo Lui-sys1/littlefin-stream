@@ -1609,28 +1609,23 @@ footer p {
 
   align-items: center;
 
-  justify-content: space-between;
-
-  gap: 14px;
+  gap: 16px;
 
   padding: 0;
-
-  flex-wrap: nowrap;
 }
-
 /* BOTÓN VOLVER */
 .volver-btn {
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
 
-  min-width: 46px;
+  min-width: 48px;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  border-radius: 14px;
+  border-radius: 16px;
 
   background:
     rgba(255,255,255,0.08);
@@ -1641,9 +1636,13 @@ footer p {
 
   font-size: 22px;
 
+  font-weight: 700;
+
   transition: all .25s ease;
 
   backdrop-filter: blur(10px);
+
+  flex-shrink: 0;
 }
 
 .volver-btn:hover {
@@ -1662,6 +1661,12 @@ footer p {
   align-items: center;
 
   gap: 14px;
+}
+
+.carrito-title div {
+  display: flex;
+
+  flex-direction: column;
 }
 
 /* LOGO */
@@ -1730,4 +1735,6 @@ footer p {
     font-size: 20px;
   }
 }
+
+
 
