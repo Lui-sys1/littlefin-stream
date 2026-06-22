@@ -381,6 +381,28 @@ function mostrarToast(texto) {
   }, 2000);
 }
 
+/* ================= REFERIDOS ================= */
+function compartirReferido() {
+  let nombreCliente = localStorage.getItem("nombreCliente");
+
+  if (!nombreCliente) {
+    nombreCliente = prompt("Ingresa tu nombre para generar tu referido:");
+    if (!nombreCliente) return;
+    localStorage.setItem("nombreCliente", nombreCliente);
+  }
+
+  const mensaje = `Hola, te recomiendo Littlefin Stream 🔥
+
+Tienen streaming, videojuegos, combos y entrega rápida.
+
+Cuando compres, menciona que vienes recomendado por: ${nombreCliente}
+
+🌐 https://www.littlefinstream.com`;
+
+  const url = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
+
 /* ================= INIT ================= */
 actualizarContador();
 mostrarCarrito();
